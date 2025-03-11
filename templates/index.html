@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteVault</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/script.js" defer></script>
+</head>
+<body>
+    <h1>VoteVault</h1>
+    <form action="/api/download" method="get">
+        <div class="form-group">
+            <label for="category">Data Category:</label>
+            <select id="category" name="category">
+                <option value="finance">FEC Campaign Finance Data</option>
+                <option value="election">Federal Election Outcome Data</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="cycle">Election Cycle:</label>
+            <select id="cycle" name="cycle"></select>
+        </div>
+
+        <div id="financeOptions" class="checkboxes" data-show="finance">
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="candidate_summary">Candidate Summary</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="candidate_master">Candidate Master</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="cand_comm_linkage">Candidate-Committee Linkages</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="congressional_campaigns">Congressional Campaigns</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="committee_master">Committee Master</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="pac_summary">PAC Summary</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="individual_contributions">Individual Contributions</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="committee_contributions">Committee Contributions</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="committee_transactions">Committee Transactions</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="dataset" value="operating_expenditures">Operating Expenditures</label>
+            </div>
+        </div>
+
+        <div id="electionOptions" data-show="election">
+            <div class="form-group">
+                <label for="race">Race:</label>
+                <select id="race" name="race">
+                    <option value="president">President</option>
+                    <option value="house">House</option>
+                    <option value="senate">Senate</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">State:</label>
+                <select id="state" name="state">
+                    <option value="nationwide">Nationwide</option>
+                    <option value="state1">State 1</option>
+                    <option value="state2">State 2</option>
+                    <option value="state3">State 3</option>
+                    <!-- Add more states as needed -->
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="filetype">File Type:</label>
+            <select id="filetype" name="filetype">
+                <option value="csv">CSV</option>
+                <option value="xlsx">Excel</option>
+                <option value="parquet">Parquet</option>
+            </select>
+        </div>
+
+        <button type="submit" class="button">Download</button>
+    
+    </form>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

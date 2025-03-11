@@ -1,2 +1,6 @@
 __pycache__/
+.aws/
 credentials
+commands.sh
+.env
+node_modules/
