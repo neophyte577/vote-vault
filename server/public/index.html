@@ -24,36 +24,21 @@
             <select id="cycle" name="cycle"></select>
         </div>
 
-        <div id="financeOptions" class="checkboxes" data-show="finance">
+        <div id="financeOptions" data-show="finance">
             <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="candidate_summary">Candidate Summary</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="candidate_master">Candidate Master</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="cand_comm_linkage">Candidate-Committee Linkages</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="congressional_campaigns">Congressional Campaigns</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="committee_master">Committee Master</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="pac_summary">PAC Summary</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="individual_contributions">Individual Contributions</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="committee_contributions">Committee Contributions</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="committee_transactions">Committee Transactions</label>
-            </div>
-            <div class="form-group">
-                <label><input type="checkbox" name="dataset" value="operating_expenditures">Operating Expenditures</label>
+                <label for="dataset">Dataset:</label>
+                <select id="dataset" name="dataset">
+                    <option value="candidate_summary">Candidate Summary</option>
+                    <option value="candidate_master">Candidate Master</option>
+                    <option value="cand_comm_linkage">Candidate-Committee Linkages</option>
+                    <option value="congressional_campaigns">Congressional Campaigns</option>
+                    <option value="committee_master">Committee Master</option>
+                    <option value="pac_summary">PAC Summary</option>
+                    <option value="individual_contributions">Individual Contributions</option>
+                    <option value="committee_contributions">Committee Contributions</option>
+                    <option value="committee_transactions">Committee Transactions</option>
+                    <option value="operating_expenditures">Operating Expenditures</option>
+                </select>
             </div>
         </div>
 
@@ -85,7 +70,6 @@
         </div>
 
         <button type="submit" class="button">Download</button>
-    
     </form>
 
     <script src="../static/script.js"></script>
