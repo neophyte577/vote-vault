@@ -1,69 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 50px;
+    margin: 50px auto; 
+    max-width: 100%;
+    overflow-x: hidden; 
 }
+
 form {
     display: inline-block;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 600px; /* Make the form wider */
+    width: 90%;
+    max-width: 600px;
+    min-width: 320px;
 }
+
 .form-group {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 10px; /* Reduce space between form groups */
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    width: 100%;
 }
+
 .form-group label {
     margin-right: 10px;
-    flex: 0 0 180px; /* Fixed width for labels to align with dropdowns */
-    text-align: right; /* Align label text to the right */
+    flex: 0 0 180px;
+    text-align: right;
+    white-space: nowrap;
 }
+
 select, button {
     margin: 5px 0;
     padding: 10px;
     font-size: 16px;
-    width: 300px; /* Increase width for alignment */
-    text-align: left; /* Align label text to the left */
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
 }
+
 .hidden {
     display: none;
 }
+
 .checkboxes {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align checkboxes to the left */
+    align-items: flex-start;
     margin: 10px 0;
-    padding-left: 190px; /* Align checkboxes with dropdowns */
+    padding-left: 180px;
+    width: 100%;
+    max-width: 300px;
 }
+
 .checkboxes label {
     margin: 5px 0;
-    white-space: nowrap; /* Prevent text wrapping */
-    text-align: left; /* Align checkbox labels to the left */
+    white-space: nowrap;
+    text-align: left;
 }
 
 .container {
-    width: 100%; /* Adjust as needed */
-    max-width: 400px; /* Example max width for the container */
-    margin: 0 auto; /* Center the container */
+    width: 100%;
+    max-width: 400px;
+    min-width: 320px;
+    margin: 0 auto;
 }
 
 .button {
-    width: 75%; /* Make the button span the full width of the container */
-    padding: 10px; /* Add some padding for a better look */
-    border: none; /* Remove default border */
-    background-color: lightgray; /* Button background color */
-    color: Black; /* Text color */
-    font-size: 16px; /* Font size */
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: none;
+    background-color: lightgray;
+    color: black;
+    font-size: 16px;
     font-weight: bold;
-    cursor: pointer; /* Change cursor to pointer on hover */
-    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer;
+    border-radius: 5px;
     text-align: center;
+    display: block;
+    margin: 10px auto 0;
 }
 
 .button:hover {
-    background-color: gray; /* Darker shade on hover */
+    background-color: gray;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 95%;
+    }
+    
+    .form-group {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .form-group label {
+        text-align: right;
+        margin-bottom: 0;
+        flex: 0 0 40%;
+    }
+    
+    select, button {
+        max-width: 55%;
+    }
+    
+    .checkboxes {
+        padding-left: 20%;
+        align-items: flex-start;
+        max-width: 55%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .checkboxes label {
+    margin: 0 0;
+    white-space: nowrap;
+    text-align: left;
+    max-width: 50%;
+}
+    
+    .button {
+        max-width: 100%;
+    }
 }

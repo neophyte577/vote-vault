@@ -3,11 +3,10 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import express from "express";
 import dotenv from "dotenv";
 
-dotenv.config();  // Ensure .env is loaded
+dotenv.config(); 
 
 const router = express.Router();
 
-// AWS S3 Configuration
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {
@@ -18,7 +17,8 @@ const s3 = new S3Client({
 
 const BUCKET_NAME = process.env.S3_BUCKET;
 
-// Handle file download request
+const FASTAPI_URL = process.env.FASTAPI_URL || "http://localhost:1337"; 
+
 router.get("/", async (req, res) => {
   const { category, cycle, dataset, filetype } = req.query;
 
@@ -26,29 +26,37 @@ router.get("/", async (req, res) => {
     return res.status(400).json({ error: "Missing required parameters." });
   }
 
-  let filename = `campaign-finance/today_${dataset}_${cycle}.${filetype}`;
-  console.log(`🔍 Requesting file from S3: Bucket=${BUCKET_NAME}, Key=${filename}`);
+  const sourceFilename = `campaign-finance/${cycle}/${dataset}_${cycle}.parquet`;
+  console.log(`🔍 Checking file in S3: ${sourceFilename}`);
 
   try {
-    await s3.send(new HeadObjectCommand({ Bucket: BUCKET_NAME, Key: filename }));
-    console.log(`✅ File found in S3: ${filename}`);
+      await s3.send(new HeadObjectCommand({ Bucket: BUCKET_NAME, Key: sourceFilename }));
+      console.log(`:) Source file found in S3: ${sourceFilename}`);
   } catch (error) {
-    console.error(`❌ File not found in S3: ${filename}`, error);
-    return res.status(404).json({ error: `File '${filename}' not found in S3.` });
+      console.error(`WRONG. Source file missing in S3: ${sourceFilename}`, error);
+      return res.status(404).json({ error: `Source file '${sourceFilename}' not found in S3.` });
   }
 
-  try {
-    const signedUrl = await getSignedUrl(
-      s3,
-      new GetObjectCommand({ Bucket: BUCKET_NAME, Key: filename }),
-      { expiresIn: 3600 }
-    );
+  if (filetype === "parquet") {
+    try {
+      const signedUrl = await getSignedUrl(
+        s3,
+        new GetObjectCommand({ Bucket: BUCKET_NAME, Key: sourceFilename }),
+        { expiresIn: 3600 }
+      );
 
-    console.log("🔗 Generated signed URL:", signedUrl);
-    res.json({ download_url: signedUrl });
-  } catch (error) {
-    console.error("❌ Error generating signed URL:", error);
-    res.status(500).json({ error: error.message });
+      console.log("🔗 Generated signed URL:", signedUrl);
+      res.json({ download_url: signedUrl });
+    } catch (error) {
+        console.error("WRONG. Error generating signed URL:", error);
+        res.status(500).json({ error: error.message });
+    }
+  } else if (filetype === "csv" || filetype === "xlsx") {
+      const fastapiUrl = `${FASTAPI_URL}/convert?dataset_name=${dataset}&cycle=${cycle}&filetype=${filetype}`;
+      console.log(`🔀 Redirecting user to FastAPI: ${fastapiUrl}`);
+      res.json({ redirect_url: fastapiUrl });
+  } else {
+      res.status(400).json({ error: "Invalid filetype. Only 'parquet', 'csv', or 'xlsx' are allowed." });
   }
 });
 
