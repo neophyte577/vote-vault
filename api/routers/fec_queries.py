@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException, Query, Request
+from fastapi import FastAPI, Depends, APIRouter, HTTPException, Query, Request
+from starlette.status import HTTP_401_UNAUTHORIZED
+from auth import validate_api_key
 import snowflake.connector
 import os
 import re
@@ -10,7 +12,7 @@ from slowapi.util import get_remote_address
 logger = logging.getLogger("uvicorn")
 logger.setLevel(logging.INFO)
 
-router = APIRouter(prefix="/fec", tags=["FEC Data"])
+router = APIRouter(prefix="/fec", tags=["FEC Queries"])
 
 limiter = Limiter(key_func=get_remote_address)
 
@@ -57,7 +59,7 @@ def validate_sql_query(query: str):
 
     return query
 
-@router.get("/query")
+@router.get("/param_query")
 @limiter.limit("5/minute")
 def query_fec_data(request: Request,
     table: str = Query(..., title="Primary Table Name"),
@@ -110,18 +112,25 @@ def query_fec_data(request: Request,
 class SQLQuery(BaseModel):
     query: str
 
-@router.post("/query_sql")
+@router.post("/sql_query")
 @limiter.limit("5/minute")
-def query_fec_sql(request: Request, query_data: SQLQuery):
-    query = query_data.query.strip()
-    query = validate_sql_query(query)
+async def query_fec_sql(request: Request, query_data: SQLQuery, check: bool = Depends(validate_api_key)):
+    if check:
+
+        query = query_data.query.strip()
+        query = validate_sql_query(query)
+        
+        try:
+            with get_snowflake_connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(query)
+                    result = cur.fetchall()
+                    columns = [desc[0] for desc in cur.description]
+            return [dict(zip(columns, row)) for row in result]
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+    else:
+        raise HTTPException(
+            status_code=HTTP_401_UNAUTHORIZED, detail="WRONG. Try a working API key next time."
+        )
     
-    try:
-        with get_snowflake_connection() as conn:
-            with conn.cursor() as cur:
-                cur.execute(query)
-                result = cur.fetchall()
-                columns = [desc[0] for desc in cur.description]
-        return [dict(zip(columns, row)) for row in result]
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))

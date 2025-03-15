@@ -9,7 +9,7 @@ from starlette.background import BackgroundTask
 
 load_dotenv()
 
-router = APIRouter()
+router = APIRouter(tags=['Conversion'])
 
 AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
