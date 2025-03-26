@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+@theme {
+  --font-display: "Roboto", "sans-serif";
+  --color-cream: #FFF5E1;
+  --color-softVanilla: #FDECC2;
+  --color-paleHoney: #FCE5B1;
+  --color-butterCream: #FFE8A1;
+  --color-mutedAmber: #EAC878
+}
+
+@theme {
+  --animation-fade-out: fadeOut 0.7s ease-in-out forwards;
+}
+
+@keyframes shiny-text {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content;
+  gap: 2.5rem;
+  animation: marquee-right var(--marquee-duration, 60s) linear infinite;
+  will-change: transform;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 1.5rem; 
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Space Grotesk", sans-serif;
+  background: #0a0a0a;
+  color: #E4C06D;
+}
+
+@layer utilities {
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  select {
+    background-color: rgba(40, 40, 40, 0.4) !important;
+    color: #FDECC2 !important;
+  }
+  
+  select:focus {
+    background-color: rgba(20, 20, 20, 0.7) !important;
+    color: #FFFBEA !important; 
+    border-color: #FDECC2 !important; 
+  }
+
+  select option {
+    background-color: rgba(20, 20, 20, 0.9) !important; 
+    color: #FDECC2 !important; 
+  }
+  
+  select option:hover,
+  select option:focus {
+    background-color: rgba(30, 30, 30, 0.8) !important; 
+    color: #FFFBEA !important;
+  }  
+
+  .animate-blink {
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
+  .animate-loading-bar {
+    animation: loading 0.8s ease infinite;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-out-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 99%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 99%);
+}
+
+.v-transition {
+  transition: color 2s ease-in-out; 
+}
