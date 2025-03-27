@@ -13,13 +13,12 @@ const scrambleText = (text, characterSet) =>
 export function HyperText({
   children,
   className = "",
-  duration = 800,
-  delay = 200,
+  animationTime = 1600,
   as: Component = "div",
   animateOnHover = true,
   characterSet = DEFAULT_CHARACTER_SET,
   triggerOnce = false,
-  onComplete = null, 
+  onComplete = null,
   ...props
 }) {
   const [displayText, setDisplayText] = useState(() =>
@@ -27,11 +26,11 @@ export function HyperText({
   );
   const [isAnimating, setIsAnimating] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
-  const iterationCount = useRef(0);
+  const step = useRef(0);
   const elementRef = useRef(null);
 
   const startUnscramble = () => {
-    iterationCount.current = 0;
+    step.current = 0;
     setIsAnimating(true);
   };
 
@@ -44,43 +43,38 @@ export function HyperText({
   useEffect(() => {
     if (triggerOnce && !hasStarted) {
       setHasStarted(true);
-
       setDisplayText(scrambleText(children, characterSet));
-
-      setTimeout(() => {
-        startUnscramble();
-      }, 100);
+      startUnscramble();
     }
   }, [triggerOnce, hasStarted, children, characterSet]);
 
   useEffect(() => {
     if (!isAnimating) return;
 
-    const intervalDuration = duration / (children.length * 10);
-    const maxIterations = children.length;
+    const tick = animationTime / (children.length * 10);
+    const target = children.length;
 
     const interval = setInterval(() => {
-      if (iterationCount.current < maxIterations) {
-        setDisplayText((currentText) =>
-          currentText.map((letter, index) =>
-            letter === " "
-              ? letter
-              : index <= iterationCount.current
+      if (step.current < target) {
+        setDisplayText((current) =>
+          current.map((char, index) =>
+            char === " "
+              ? char
+              : index <= step.current
               ? children[index]
               : characterSet[getRandomInt(characterSet.length)]
           )
         );
-        iterationCount.current += 0.1;
+        step.current += 0.2;
       } else {
         setIsAnimating(false);
         clearInterval(interval);
-
         if (onComplete) onComplete();
       }
-    }, intervalDuration);
+    }, tick);
 
     return () => clearInterval(interval);
-  }, [children, duration, isAnimating, characterSet, onComplete]);
+  }, [children, animationTime, isAnimating, characterSet, onComplete]);
 
   const MotionComponent = motion(Component);
 
@@ -92,9 +86,9 @@ export function HyperText({
       {...props}
     >
       <AnimatePresence>
-        {displayText.map((letter, index) => (
-          <motion.span key={index} className={letter === " " ? "w-3" : ""}>
-            {letter.toUpperCase()}
+        {displayText.map((char, index) => (
+          <motion.span key={index} className={char === " " ? "w-3" : ""}>
+            {char.toUpperCase()}
           </motion.span>
         ))}
       </AnimatePresence>

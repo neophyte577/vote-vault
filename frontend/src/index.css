@@ -27,6 +27,17 @@
   }
 }
 
+.fade-in {
+  opacity: 1;
+  filter: blur(0);
+  transition: opacity 0.9s ease-out, filter 0.9s ease-out;
+}
+
+.fade-hidden {
+  opacity: 0;
+  filter: blur(8px);
+}
+
 .marquee-wrapper {
   overflow: hidden;
   white-space: nowrap;
