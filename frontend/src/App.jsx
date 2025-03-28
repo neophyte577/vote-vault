@@ -3,6 +3,7 @@ import Main from "./pages/Main";
 import DownloadPage from "./pages/DownloadPage";  
 import NotFoundPage from "./pages/NotFoundPage"; 
 import MainLayout from "./layouts/MainLayout";
+import BulkDataMirror from "./pages/BulkDataMirror";
 
 const App = () => {
 
@@ -11,6 +12,7 @@ const App = () => {
       <Route path='/' element={<MainLayout />} >
         <Route path="/" element={<Main />} />
         <Route path="/form-download" element={<DownloadPage />} />
+        <Route path="/fec-mirror" element={<BulkDataMirror />}/>
         <Route path="*" element={<NotFoundPage />} /> 
       </Route>
     )
