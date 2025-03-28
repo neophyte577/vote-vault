@@ -33,7 +33,7 @@ const DownloadForm = () => {
 
                     <div className="relative mt-3">
                         <label htmlFor="category" className="block mb-2">Data Category:</label>
-                        <select id="category" name="category" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 ">
+                        <select id="category" name="category" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
                             <option value="finance">FEC Campaign Finance Data</option>
                             <option value="election">Federal Election Outcome Data</option>
                         </select>

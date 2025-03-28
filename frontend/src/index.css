@@ -33,6 +33,11 @@
   }
 }
 
+::selection {
+  background-color: #FCE5B1; 
+  color: black;            
+}
+
 .fade-in {
   opacity: 1;
   filter: blur(0);
