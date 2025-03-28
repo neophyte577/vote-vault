@@ -20,6 +20,7 @@ function Main() {
           isLoaded ? "opacity-100" : "opacity-0"
         } bg-black text-gray-100`}
       > */}
+      <div className="relative w-full min-h-screen overflow-x-hidden">
       <Home />
       <About />
       <div className="hidden md:block">
@@ -29,6 +30,7 @@ function Main() {
         <ResourcesMobile />
       </div>
       <Contact />
+      </div>
     </>
   );
 }

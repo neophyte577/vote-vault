@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
-export function AnimatedGridPattern({
+export function AnimatedGrid({
   width = 40,
   height = 40,
   x = -1,

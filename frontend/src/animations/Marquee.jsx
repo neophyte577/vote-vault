@@ -9,7 +9,7 @@ const Marquee = ({ children, speed = "60s", className = "" }) => {
     <div className={`marquee-wrapper ${className}`} style={style}>
       <div className="marquee-track">
         <div className="marquee-content">{children}</div>
-        <div className="marquee-content">{children}</div> {/* 👈 duplicate */}
+        <div className="marquee-content">{children}</div> 
       </div>
     </div>
   );

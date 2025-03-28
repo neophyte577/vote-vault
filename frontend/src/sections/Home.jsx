@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { RevealOnScroll } from "../animations/RevealOnScroll";
-import { AnimatedGridPattern } from "../animations/AnimatedGridPattern";
+import { AnimatedGrid } from "../animations/AnimatedGrid";
 import { VoteVaultIcon } from "../components/VoteVaultIcon";
 import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
@@ -97,10 +97,10 @@ export const Home = () => {
 
   return (
     <section id="home" className="min-h-screen flex md:items-center justify-center relative">
-      <AnimatedGridPattern className="absolute inset-0 w-full h-full text-gray-700 fade-out-bottom" />
+      <AnimatedGrid className="absolute inset-0 w-full h-full text-gray-700 fade-out-bottom" />
 
       <RevealOnScroll>
-        <div className="text-center translate-y-[240px] md:translate-y-[0px] z-10 px-4">
+        <div className="text-center translate-y-[225px] md:translate-y-[0px] z-10 px-4">
         <div className="mb-2 md:mb-6 min-h-[5rem] relative">
             <div className={`absolute inset-0 transition-opacity duration-700 ${fadeOutIcon ? "opacity-0" : "opacity-100"}`}>
               <VoteVaultIcon className="w-[5rem] h-[5rem] md:w-[9rem] md:h-[9rem] text-paleHoney mx-auto translate-y-[-4px] md:translate-y-[-8px]" />

@@ -11,8 +11,8 @@ export const ResourceCard = ({
     children,
   }) => {
     const linkColorMap = {
-      blue: "text-blue-400 hover:text-blue-300",
-      red: "text-red-400 hover:text-red-300",
+      blue: "text-lg text-blue-400 md:text-blue-600 hover:text-blue-300 md:hover:text-blue-500 md:hover:font-semibold",
+      red: "text-lg text-red-400 md:text-red-600 hover:text-red-300 md:hover:text-red-500 md:hover:font-semibold",
       green: "text-green-400 hover:text-green-300",
     };
   
@@ -62,12 +62,12 @@ export const ResourceCard = ({
           flex flex-col justify-between
           ${
             color === "blue"
-              ? "hover:border-blue-500/30 hover:shadow-[0_0_12px_rgba(59,130,246,0.5)]"
+              ? "hover:border-blue-500/30 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.6)]"
               : ""
           }
           ${
             color === "red"
-              ? "hover:border-red-500/30 hover:shadow-[0_0_12px_rgba(239,68,68,0.4)]"
+              ? "hover:border-red-500/30 hover:shadow-[0_0_10px_4px_rgba(239,68,68,0.6)]"
               : ""
           }
         `}
