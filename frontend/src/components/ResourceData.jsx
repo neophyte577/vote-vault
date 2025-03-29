@@ -11,7 +11,7 @@ export const ResourceData = [
     id: "fec-mirror",
     title: "FEC Bulk Data Mirror",
     description: "If you'd rather access the raw data directly, we've built a fully performant mirror of the FEC's bulk data page.",
-    link: "#",
+    link: "/fec-mirror",
     color: "red",
     linkText: "Access Mirror"
   },

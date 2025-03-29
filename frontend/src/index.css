@@ -29,9 +29,11 @@
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-sm bg-white/0.25;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 }
+
 
 ::selection {
   background-color: #FCE5B1; 

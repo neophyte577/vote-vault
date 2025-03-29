@@ -11,8 +11,8 @@ export const ResourceCard = ({
     children,
   }) => {
     const linkColorMap = {
-      blue: "text-lg text-blue-400 md:text-blue-600 hover:text-blue-300 md:hover:text-blue-500 md:hover:font-semibold",
-      red: "text-lg text-red-400 md:text-red-600 hover:text-red-300 md:hover:text-red-500 md:hover:font-semibold",
+      blue: "text-lg text-blue-400 md:text-blue-600 md:font-semibold hover:text-blue-300 md:hover:text-blue-500 md:hover:font-bold",
+      red: "text-lg text-red-400 md:text-red-600 md:font-semibold hover:text-red-300 md:hover:text-red-500 md:hover:font-bold",
       green: "text-green-400 hover:text-green-300",
     };
   

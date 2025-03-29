@@ -29,9 +29,7 @@ export const Resources = () => {
 
                   <ResourceCard {...getResource("query-builder")} />
 
-                  <ResourceCard {...getResource("api")}>
-                  
-                  </ResourceCard>
+                  <ResourceCard {...getResource("api")} />
 
                 </div>
               </Marquee>
