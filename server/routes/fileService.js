@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
   }
 
   const sourceFilename = `campaign-finance/${cycle}/${dataset}_${cycle}.parquet`;
-  console.log(`🔍 Checking file in S3: ${sourceFilename}`);
+  console.log(`Checking file in S3: ${sourceFilename}`);
 
   try {
       await s3.send(new HeadObjectCommand({ Bucket: BUCKET_NAME, Key: sourceFilename }));
@@ -45,7 +45,7 @@ router.get("/", async (req, res) => {
         { expiresIn: 3600 }
       );
 
-      console.log("🔗 Generated signed URL:", signedUrl);
+      console.log("Generated signed URL:", signedUrl);
       res.json({ download_url: signedUrl });
     } catch (error) {
         console.error("WRONG. Error generating signed URL:", error);
@@ -53,7 +53,7 @@ router.get("/", async (req, res) => {
     }
   } else if (filetype === "csv" || filetype === "xlsx") {
       const fastapiUrl = `${FASTAPI_URL}/convert?dataset_name=${dataset}&cycle=${cycle}&filetype=${filetype}`;
-      console.log(`🔀 Redirecting user to FastAPI: ${fastapiUrl}`);
+      console.log(`Redirecting user to FastAPI: ${fastapiUrl}`);
       res.json({ redirect_url: fastapiUrl });
   } else {
       res.status(400).json({ error: "Invalid filetype. Only 'parquet', 'csv', or 'xlsx' are allowed." });

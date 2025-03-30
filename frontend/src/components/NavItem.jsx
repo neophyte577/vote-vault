@@ -18,7 +18,11 @@ const NavItem = ({ to, label, type = "hash", active, shiny = false }) => {
   const LinkComponent = type === "route" ? NavLink : HashLink;
 
   return (
-    <LinkComponent smooth to={to} className={combinedClass}>
+    <LinkComponent
+      to={to}
+      className={combinedClass}
+      {...(type !== "route" && { smooth: true })}
+    >
       {shiny ? (
         <ShinyText shimmerWidth={100} className="inline-block">
           {label}
@@ -27,7 +31,7 @@ const NavItem = ({ to, label, type = "hash", active, shiny = false }) => {
         label
       )}
     </LinkComponent>
-  );
+  );  
 };
 
 export default NavItem;

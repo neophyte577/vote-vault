@@ -4,6 +4,21 @@ import { ChevronDown, ChevronUp, Download } from 'lucide-react';
 export default function Accordion({ section }) {
   const [open, setOpen] = useState(false);
 
+  const handleDownload = async (urlPath) => {
+    try {
+      const response = await fetch(`/raw?url=${encodeURIComponent(urlPath)}`);
+      const data = await response.json();
+  
+      if (data.download_url) {
+        window.open(data.download_url, "_blank");
+      } else {
+        console.error("No download URL returned.");
+      }
+    } catch (err) {
+      console.error("Error fetching signed URL:", err);
+    }
+  };
+
   return (
     <div className="border rounded-2xl shadow p-4 bg-card">
       <button
@@ -24,14 +39,13 @@ export default function Accordion({ section }) {
             <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-2">
               {section.links.map((link, i) => (
                 <li key={i} className="whitespace-nowrap">
-                  <a
-                    href={link.url}
-                    className="flex items-center gap-2 text-primary hover:underline"
-                    download
+                  <button
+                    onClick={() => handleDownload(link.url)}
+                    className="flex items-center gap-2 text-primary hover:underline cursor-pointer"
                   >
                     <Download className="w-4 h-4 translate-x-[3px]" />
                     {link.year}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

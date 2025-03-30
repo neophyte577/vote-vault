@@ -12,6 +12,11 @@ export default defineConfig({
       changeOrigin: true,
       rewrite: (path) => path.replace(/^\/download/, '/download')
       },
+      '/raw': {
+      target: 'http://localhost:8008',
+      changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/raw/, '/raw')
+      },
     },
   },
 });
