@@ -28,7 +28,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
   const activeSection = isMainPage ? rawActiveSection : '';
 
   return (
-    <nav className="fixed top-0 w-full z-[999] bg-[rgba(10, 10, 10, 0.7)] backdrop-blur-sm border-b border-white/10 shadow-lg">
+    <nav className="fixed top-0 z-[420] w-full bg-[rgba(10, 10, 10, 0.7)] backdrop-blur-sm border-b border-white/10 shadow-lg">
       <div className="max-w-5xl mx-auto px-7">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">

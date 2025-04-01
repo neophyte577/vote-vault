@@ -7,7 +7,7 @@ const MobileMenu = ({ menuOpen, setMenuOpen }) => {
 
   return (
     <div
-      className={`fixed left-0 w-full bg-[rgba(10,10,10,0.8)] z-69 flex flex-col items-center justify-center
+      className={`fixed z-[690] left-0 w-full bg-[rgba(10,10,10,0.8)] flex flex-col items-center justify-center
                   transition-all duration-300 ease-in-out
                   ${menuOpen ? "top-0 opacity-100 pointer-events-auto" : "top-[-100vh] opacity-0 pointer-events-none"}
                 `}
