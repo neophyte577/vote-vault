@@ -28,14 +28,14 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
   const activeSection = isMainPage ? rawActiveSection : '';
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.7)] backdrop-blur-sm border-b border-white/10 shadow-lg">
+    <nav className="fixed top-0 w-full z-[999] bg-[rgba(10, 10, 10, 0.7)] backdrop-blur-sm border-b border-white/10 shadow-lg">
       <div className="max-w-5xl mx-auto px-7">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <span className="translate-y-[4px] translate-x-[4px]">
               <VoteVaultIcon className="w-7 h-7 md:w-8 md:h-8 text-paleHoney" />
             </span>
-            <NavLink to="/" className="font-mono text-xl md:text-[22px] font-bold text-cream">
+            <NavLink to="/" className="font-mono text-xl md:text-[22px] font-bold">
               <span className="text-paleHoney">vault.</span>
               <span className="text-blue-500">v</span>
               <span className="text-red-500">o</span>

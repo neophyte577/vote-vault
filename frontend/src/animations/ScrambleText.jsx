@@ -76,7 +76,7 @@ export function HyperText({
     return () => clearInterval(interval);
   }, [children, animationTime, isAnimating, characterSet, onComplete]);
 
-  const MotionComponent = motion(Component);
+  const MotionComponent = motion.create(Component);
 
   return (
     <MotionComponent

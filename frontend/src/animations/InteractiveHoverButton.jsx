@@ -22,9 +22,9 @@ export const InteractiveHoverButton = React.forwardRef(
           </div>
 
           {/* Hover view: text + arrow */}
-          <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 transition-opacity duration-300 delay-100 group-hover:opacity-100">
+          <div className="absolute inset-0 flex items-center justify-center gap-[5.75px] opacity-0 transition-opacity duration-300 delay-100 group-hover:opacity-100">
             <span>{children}</span>
-            <text className="text-paleHoney text-sm">➤</text>
+            <div className="text-paleHoney text-sm">➤</div>
           </div>
         </div>
       </button>
