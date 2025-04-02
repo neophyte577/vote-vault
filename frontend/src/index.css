@@ -185,8 +185,20 @@ body {
 }
 
 .fade-out-bottom {
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 99%);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 99%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 0.7) 80%,
+    rgba(0, 0, 0, 0.18) 90%,
+    rgba(0, 0, 0, 0) 99%
+  );
+  mask-image: linear-gradient(
+  to bottom,
+  rgba(0, 0, 0, 1) 70%,
+  rgba(0, 0, 0, 0.7) 80%,
+  rgba(0, 0, 0, 0.18) 90%,
+  rgba(0, 0, 0, 0) 99%
+);
 }
 
 .v-transition {

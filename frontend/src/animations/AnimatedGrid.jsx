@@ -13,12 +13,13 @@ export function AnimatedGrid({
   maxOpacity = 0.5,
   duration = 4,
   repeatDelay = 0.5,
-  colorChangeInterval = 5000, 
+  colorChangeInterval = 5000,
   ...props
 }) {
   const id = `pattern-${Math.random().toString(36).substr(2, 9)}`;
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [squareCount, setSquareCount] = useState(numSquares);
   const [squares, setSquares] = useState(() => generateSquares(numSquares));
 
   function getPos() {
@@ -32,15 +33,15 @@ export function AnimatedGrid({
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       pos: getPos(),
-      color: getRandomColor(), 
+      color: getRandomColor(),
     }));
   }
 
   function getRandomColor() {
     const roll = Math.random();
-    if (roll < 0.05) return "red"; 
-    if (roll < 0.1) return "blue"; 
-    return "gray"; 
+    if (roll < 0.06) return "red";
+    if (roll < 0.12) return "blue";
+    return "gray";
   }
 
   const updateSquarePosition = (id) => {
@@ -57,10 +58,22 @@ export function AnimatedGrid({
   };
 
   useEffect(() => {
+    const checkScreenSize = () => {
+      const isMobile = window.innerWidth < 768;
+      setSquareCount(isMobile ? Math.floor(numSquares * 0.5) : numSquares);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, [numSquares]);
+
+  useEffect(() => {
     if (dimensions.width && dimensions.height) {
-      setSquares(generateSquares(numSquares));
+      setSquares(generateSquares(squareCount));
     }
-  }, [dimensions, numSquares]);
+  }, [dimensions, squareCount]);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
@@ -136,7 +149,7 @@ export function AnimatedGrid({
             height={height - 1}
             x={x * width + 1}
             y={y * height + 1}
-            fill={color === "red" ? "#ff4d4d" : color === "blue" ? "#4d79ff" : "gray"} 
+            fill={color === "red" ? "#ff4d4d" : color === "blue" ? "#4d79ff" : "gray"}
             strokeWidth="0"
           />
         ))}

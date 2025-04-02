@@ -12,7 +12,7 @@ export const useScrollSpy = (sectionIds, offset = 0) => {
         .map((id) => document.getElementById(id))
         .filter(Boolean);
 
-      console.log("🎯 Observing sections:", elements.map(e => e.id));
+      console.log("Observing sections:", elements.map(e => e.id));
 
       observer = new IntersectionObserver(
         (entries) => {
@@ -22,7 +22,7 @@ export const useScrollSpy = (sectionIds, offset = 0) => {
 
           if (visible.length > 0) {
             const topId = visible[0].target.id;
-            console.log("🟢 Entering:", topId);
+            console.log("Entering:", topId);
             setActiveId(topId);
           }
         },

@@ -21,8 +21,8 @@ export const About = () => {
     >
       <div className="max-w-5xl mx-auto px-4">
         <RevealOnScroll>
-          <div className="flex justify-center mt-18 md:mt-20 mb-8 md:mb-16">
-            <VoteVaultIcon className="w-[8rem] h-[8rem] md:w-[11.5rem] md:h-[11.5rem] text-paleHoney mx-auto md:translate-y-[6px]" />
+          <div className="flex justify-center mt-18 md:mt-24 mb-8 md:mb-15">
+            <VoteVaultIcon className="w-[9rem] h-[9rem] md:w-[12rem] md:h-[12rem] text-paleHoney mx-auto md:translate-y-[6px]" />
           </div>
         </RevealOnScroll>
 

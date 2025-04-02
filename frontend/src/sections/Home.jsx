@@ -18,12 +18,11 @@ export const Home = () => {
   const [fadeOutIcon, setFadeOutIcon] = useState(false);
   const [fadeInTitle, setFadeInTitle] = useState(false);
 
-  const interpulseDelay = 8500;
+  const interpulseDelay = 7000;
   const pulseDuration = 3000;
 
   useEffect(() => {
     const delay = 800; 
-    const fadeDuration = 600;
 
     const fadeOutTimer = setTimeout(() => {
       setFadeOutIcon(true);
@@ -43,7 +42,6 @@ export const Home = () => {
         setTextIndex(index);
       } else {
         clearInterval(interval);
-        setTimeout(() => startPulsingCycle(), 2000);
       }
     }, 50);
 
@@ -101,9 +99,9 @@ export const Home = () => {
 
       <RevealOnScroll>
         <div className="text-center translate-y-[225px] md:translate-y-[0px] z-10 px-4">
-        <div className="mb-2 md:mb-6 min-h-[5rem] relative">
+          <div className="mb-2 md:mb-5 min-h-[5rem] relative">
             <div className={`absolute inset-0 transition-opacity duration-700 ${fadeOutIcon ? "opacity-0" : "opacity-100"}`}>
-              <VoteVaultIcon className="w-[5rem] h-[5rem] md:w-[9rem] md:h-[9rem] text-paleHoney mx-auto translate-y-[-4px] md:translate-y-[-8px]" />
+              <VoteVaultIcon className="w-[5rem] h-[5rem] md:w-[9rem] md:h-[9rem] text-paleHoney mx-auto translate-y-[-4px] md:translate-y-[-10px]" />
             </div>
             <h1 className={`transition-opacity duration-700 ${fadeInTitle ? "opacity-100" : "opacity-0"} text-6xl md:text-[110px] font-bold text-paleHoney bg-clip-text leading-right pb-4`}>
               {renderTitle()}
