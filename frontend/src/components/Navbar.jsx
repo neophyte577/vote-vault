@@ -5,6 +5,7 @@ import NavItem from './NavItem';
 import { VoteVaultIcon } from "./VoteVaultIcon";
 import { ScrollProgress } from "../animations/ScrollProgress";
 import { useScrollSpy } from '../hooks/useScrollSpy';
+import DropdownLink from "./DropdownLink";
 
 const Navbar = ({ menuOpen, setMenuOpen }) => {
   const location = useLocation();
@@ -56,7 +57,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
           <div className="hidden md:flex items-center space-x-7">
             <NavItem to="/#home" label="Home" active={activeSection === 'home'} />
             <NavItem to="/#about" label="About" active={activeSection === 'about'} />
-            <NavItem to="/#resources" label="Resources" active={activeSection === 'resources'} />
+            <DropdownLink to="/#resources" label="Resources" active={activeSection === 'resources'}/>
             <NavItem to="/#contact" label="Contact" active={activeSection === 'contact'} />
             <NavItem to="/#donate" label="Donate" active={activeSection === 'donate'} />
             <NavItem to="/form-download" label="Get Data" type="route" shiny />

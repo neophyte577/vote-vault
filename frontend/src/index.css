@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
 @import "tailwindcss";
 
 .font-orbitron {
   font-family: 'Orbitron', sans-serif;
 }
+
+.font-oxanium {
+  font-family: 'Oxanium', sans-serif;
+}
+
 
 @theme {
   --font-display: "Roboto", "sans-serif";
@@ -11,7 +17,8 @@
   --color-softVanilla: #FDECC2;
   --color-paleHoney: #FCE5B1;
   --color-butterCream: #FFE8A1;
-  --color-mutedAmber: #EAC878
+  --color-mutedAmber: #EAC878;
+  --color-mutedBlack: #0A0A0A
 }
 
 @theme {
@@ -32,6 +39,14 @@
     @apply backdrop-blur-sm;
   }
 }
+
+@layer utilities {
+  .glass-dark {
+    @apply bg-[rgba(10,10,10,0.7)] backdrop-blur-sm border border-white/10;
+  }
+}
+
+
 
 ::selection {
   background-color: #FCE5B1; 
