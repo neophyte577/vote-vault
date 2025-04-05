@@ -62,7 +62,7 @@ const DownloadForm = () => {
     };
 
     return (
-        <section id="download" className="flex md:max-w-105 items-center justify-center text-softVanilla">
+        <section id="download" className="font-oxanium flex md:max-w-105 items-center justify-center text-softVanilla">
             <div className="relative justify-center text-lg px-4 w-full max-w-115 min-w-[300px] md:w-[500px] sm:w-2/3 p-6 bg-[rgba(15,15,15,0.65)] border border-white/10 rounded shadow-lg">
                 <BorderBeam colorFrom="#FFF5E1" colorTo="#FCE5B1" size={140} duration={12} />
                 <h2 className="text-3xl font-bold text-paleHoney text-center pb-1">Download Data</h2>
@@ -87,7 +87,7 @@ const DownloadForm = () => {
                     {category === "finance" && (
                         <div className="relative mt-3">
                             <label htmlFor="dataset" className="block mb-2">Dataset:</label>
-                            <select id="dataset" name="dataset" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
+                            <select id="dataset" name="dataset" className="w-full font-semibold bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
                                 <option value="candidate_summary">Candidate Summary</option>
                                 <option value="candidate_master">Candidate Master</option>
                                 <option value="cand_comm_linkage">Candidate-Committee Linkages</option>

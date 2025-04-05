@@ -103,7 +103,7 @@ export const ResourceCard = ({
           <div className="mt-auto pt-4">
             <NavLink
               to={link}
-              className={`${linkClasses} text-lg transition-colors font-medium`}
+              className={`${linkClasses} font-orbitron text-lg transition-colors font-medium`}
             >
               {linkText} →
             </NavLink>

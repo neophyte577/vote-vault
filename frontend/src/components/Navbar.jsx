@@ -36,13 +36,13 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
             <span className="translate-y-[4px] translate-x-[4px]">
               <VoteVaultIcon className="w-7 h-7 md:w-8 md:h-8 text-paleHoney" />
             </span>
-            <NavLink to="/" className="font-mono text-xl md:text-[22px] font-bold">
+            <a href="/" className="font-mono text-xl md:text-[22px] font-bold">
               <span className="text-paleHoney">vault.</span>
               <span className="text-blue-500">v</span>
               <span className="text-red-500">o</span>
               <span className="text-blue-500">t</span>
               <span className="text-red-500">e</span>
-            </NavLink>
+            </a>
           </div>
 
           {!menuOpen && (

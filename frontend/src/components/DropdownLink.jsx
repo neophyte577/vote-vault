@@ -60,13 +60,13 @@ const DropdownLink = ({
       <AnimatePresence>
         {selected && (
           <motion.div
-            id="overlay-content"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            className="absolute left-1/2 top-[calc(100%_+_26px)] min-w-[280px] max-w-fit -translate-x-1/2 rounded-lg border border-paleHoney bg-mutedBlack/85 p-4 z-50"
+          id="overlay-content"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 8 }}
+          className="absolute left-1/2 top-[calc(100%_+_26px)] min-w-[280px] max-w-fit -translate-x-1/2 rounded-lg border border-paleHoney bg-mutedBlack/85 p-4 z-50" 
           >
-            <div className="absolute -top-[2px] left-1/2 w-[18px] h-[12px] -translate-x-1/2 bg-[] z-50 pointer-events-none" />
+            <div className="absolute -top-[2px] left-1/2 w-[18px] h-[12px] -translate-x-1/2 bg-mutedBlack z-50 pointer-events-none" />
 
             <div className="absolute -top-[24px] left-0 right-0 h-[24px] border-mutedAmber" />
             <motion.span

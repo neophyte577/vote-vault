@@ -1,5 +1,5 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
-import Main from "./pages/Main";  
+import Main from "./pages/MainPage";  
 import DownloadPage from "./pages/DownloadPage";  
 import NotFoundPage from "./pages/NotFoundPage"; 
 import MainLayout from "./layouts/MainLayout";

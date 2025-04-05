@@ -26,11 +26,13 @@ export const LoadingScreen = ({ onComplete, exiting }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 transition-transform duration-700 ease-in-out ${
+      className={`fixed inset-0 z-[9999] transition-transform duration-700 ease-in-out ${
         exiting ? '-translate-x-full' : 'translate-x-0'
       }`}
     >
+      
       <div className="fixed inset-0 z-50 bg-black text-gray-100 flex flex-col items-center justify-center gap-3">
+
         {/* animation */}
         <div className="flex items-center justify-center w-full">
           <div className="w-[80vw] max-w-[500px]">
@@ -47,6 +49,7 @@ export const LoadingScreen = ({ onComplete, exiting }) => {
         <div className="w-[150px] md:w-[350px] h-[2px] bg-gray-900 rounded relative overflow-hidden">
           <div className="w-[40%] h-full bg-paleHoney shadow-[0_0_15px_#3b82f6] animate-loading-bar"></div>
         </div>
+
       </div>
     </div>
   );

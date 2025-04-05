@@ -9,8 +9,8 @@ export default function BulkDataMirror() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
-      <div className="absolute inset-0 bg-[#0a0a0a] will-change-transform z-0" />
+    <div className="relative min-h-screen overflow-hidden bg-mutedBlack">
+      <div className="absolute inset-0 bg-mutedBlack will-change-transform z-0" />
       <FlickeringGrid className="absolute inset-0 z-10 pointer-events-none" />
 
       <div className="relative z-20 mt-16 text-paleHoney px-4 py-8">

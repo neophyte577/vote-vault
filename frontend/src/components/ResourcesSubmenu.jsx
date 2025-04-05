@@ -9,19 +9,19 @@ const ResourcesSubmenu = ({ onLinkClick }) => {
         <NavLink
           to="/form-download"
           onClick={onLinkClick}
-          className="flex flex-col items-center text-neutral-400 hover:text-cream transition-colors"
+          className="flex flex-col items-center font-semibold text-neutral-500 hover:text-cream transition-colors"
         >
           <Download className="mb-2.5 mt-3 w-8 h-8 text-paleHoney" />
-          <span className="font-oxanium text-[15px] mb-2">Downloads</span>
+          <span className="font-oxanium text-[16px] mb-2">Downloads</span>
         </NavLink>
 
         <NavLink
           to="#"
           onClick={onLinkClick}
-          className="flex flex-col items-center text-neutral-400 hover:text-cream transition-colors"
+          className="flex flex-col items-center font-semibold text-neutral-500 hover:text-cream transition-colors"
         >
           <PieChart className="mb-2.5 mt-3 w-8 h-8 text-paleHoney" />
-          <span className="font-oxanium text-[15px] mb-2">Dashboard</span>
+          <span className="font-oxanium text-[16px] mb-2">Dashboard</span>
         </NavLink>
 
       </div>
@@ -36,19 +36,19 @@ const ResourcesSubmenu = ({ onLinkClick }) => {
         <NavLink
           to="#"
           onClick={onLinkClick}
-          className="flex flex-col items-center text-neutral-400 hover:text-cream transition-colors"
+          className="flex flex-col items-center font-semibold text-neutral-500 hover:text-cream transition-colors"
         >
           <Plug className="mb-2.5 mt-3 w-8 h-8 text-paleHoney" />
-          <span className="font-oxanium text-[15px] mb-2">Public API</span>
+          <span className="font-oxanium text-[16px] mb-2">Public API</span>
         </NavLink>
 
         <NavLink
           to="/fec-mirror"
           onClick={onLinkClick}
-          className="flex flex-col items-center text-neutral-400 hover:text-cream transition-colors"
+          className="flex flex-col items-center font-semibold text-neutral-500 hover:text-cream transition-colors"
         >
           <Server className="mb-2.5 mt-3 w-8 h-8 text-paleHoney" />
-          <span className="font-oxanium text-[15px] mb-2">FEC Mirror</span>
+          <span className="font-oxanium text-[16px] mb-2">FEC Mirror</span>
         </NavLink>
       </div>
     </div>
