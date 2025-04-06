@@ -7,26 +7,22 @@ import { ScrollProgress } from "../animations/ScrollProgress";
 import { useScrollSpy } from '../hooks/useScrollSpy';
 import DropdownLink from "./DropdownLink";
 
-const Navbar = ({ menuOpen, setMenuOpen }) => {
+const Navbar = ({ menuOpen, setMenuOpen, isContentLoaded }) => {
   const location = useLocation();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
 
-  const linkClass = (to) => {
-    const isActive = location.pathname + location.hash === to;
-    return isActive ? "text-lg text-paleHoney hover:text-cream transition-colors" : "text-paleHoney hover:text-cream transition-colors";
-  };
-
   const isMainPage =
     location.pathname === "/" &&
     (!location.hash || location.hash.startsWith("#"));
 
-
   const sectionIds = ['home', 'about', 'resources', 'contact', 'donate'];
-  const rawActiveSection = useScrollSpy(sectionIds, 100);
-  const activeSection = isMainPage ? rawActiveSection : '';
+  const rawActiveSection = useScrollSpy(sectionIds, 100); // always call it
+  const activeSection = isMainPage && isContentLoaded
+    ? rawActiveSection || 'home'
+    : '';
 
   return (
     <nav className="fixed top-0 z-[420] w-full bg-[rgba(10, 10, 10, 0.7)] backdrop-blur-sm border-b border-white/10 shadow-lg">
@@ -57,7 +53,7 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
           <div className="hidden md:flex items-center space-x-7">
             <NavItem to="/#home" label="Home" active={activeSection === 'home'} />
             <NavItem to="/#about" label="About" active={activeSection === 'about'} />
-            <DropdownLink to="/#resources" label="Resources" active={activeSection === 'resources'}/>
+            <DropdownLink to="/#resources" label="Resources" active={activeSection === 'resources'} />
             <NavItem to="/#contact" label="Contact" active={activeSection === 'contact'} />
             <NavItem to="/#donate" label="Donate" active={activeSection === 'donate'} />
             <NavItem to="/form-download" label="Get Data" type="route" shiny />

@@ -97,6 +97,7 @@ export const Home = () => {
 
   return (
     <section id="home" className="min-h-screen flex md:items-center justify-center relative">
+
       <AnimatedGrid className="absolute inset-0 w-full h-full text-gray-700 fade-out-bottom" />
 
       <RevealOnScroll>
