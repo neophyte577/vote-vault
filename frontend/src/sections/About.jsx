@@ -46,7 +46,7 @@ export const About = () => {
                 triggerOnce={revealWhatCard}
                 className="text-lg md:text-xl text-cream md:w-2/3 border-white/10 border rounded-xl p-6"
               >
-                <strong className="text-butterCream font-orbitron">VoteVault</strong> is a public data platform designed to make campaign finance and election data transparent, explorable, and actionable. We gather, clean, and serve high-quality datasets through a user-friendly web interface and public API.
+                <strong className="text-butterCream font-orbitron">VoteVault</strong> is a public data platform designed to make campaign finance and election data transparent, explorable, and actionable. We gather, normalize, and serve high-quality datasets through our user-friendly web interface and public API.
               </FadeInCard>
             </div>
           </RevealOnScroll>

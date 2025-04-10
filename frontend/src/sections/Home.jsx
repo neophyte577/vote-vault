@@ -112,7 +112,7 @@ export const Home = () => {
           </div>
 
           <div className={`transition-all duration-1000 transform ${showSubtitleAndButtons ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            <p className="text-md md:text-2xl font-orbitron font-semibold mb-5 max-w-lg mx-auto text-paleHoney translate-y-[-4px]">
+            <p className="mt-2 text-md md:text-2xl font-orbitron font-semibold mb-5 max-w-lg mx-auto text-paleHoney translate-y-[-4px]">
               Open Data for an Open Democracy
             </p>
 
