@@ -63,8 +63,8 @@ export const bulkDataSections = [
             { year: "1981–1982", url: "candidate-master/cn82.zip" },
             { year: "1979–1980", url: "candidate-master/cn80.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/candidate-master-file-description/",
-        headerFile: "data_dictionaries/cn_header_file.csv"
+        dataDescriptionKey: "candidate_master",
+        headerFile: "metadata/header-files/cn_header_file.csv"
     },
 
     // 3. Candidate-committee linkages
@@ -88,7 +88,7 @@ export const bulkDataSections = [
             { year: "1999–2000", url: "cand-comm-link/ccl00.zip" }
         ],          
         dataDescription: "/campaign-finance-data/candidate-committee-linkage-file-description/",
-        headerFile: "data_dictionaries/ccl_header_file.csv"
+        headerFile: "metadata/header-files/ccl_header_file.csv"
     },
 
     // 4. House/Senate current campaigns
@@ -147,7 +147,7 @@ export const bulkDataSections = [
             { year: "1979–1980", url: "committee-master/cm80.zip" }
         ],          
         dataDescription: "/campaign-finance-data/committee-master-file-description/",
-        headerFile: "data_dictionaries/cm_header_file.csv"
+        headerFile: "metadata/header-files/cm_header_file.csv"
     },
 
     // 6. PAC summary
@@ -206,7 +206,7 @@ export const bulkDataSections = [
             { year: "1979–1980", url: "individual-contributions/indiv80.zip" }
         ],          
         dataDescription: "/campaign-finance-data/contributions-individuals-file-description/",
-        headerFile: "data_dictionaries/indiv_header_file.csv"
+        headerFile: "metadata/header-files/indiv_header_file.csv"
     },
 
     // 8. Contributions from committees to candidates & independent expenditures
@@ -240,7 +240,7 @@ export const bulkDataSections = [
             { year: "1979–1980", url: "committee-contributions/pas280.zip" }
         ],          
         dataDescription: "/campaign-finance-data/contributions-committees-candidates-file-description/",
-        headerFile: "data_dictionaries/pas2_header_file.csv"
+        headerFile: "metadata/header-files/pas2_header_file.csv"
     },
 
     // 9. Any transaction from one committee to another
@@ -274,7 +274,7 @@ export const bulkDataSections = [
             { year: "1979–1980", url: "committee-transactions/oth80.zip" }
         ],          
         dataDescription: "/campaign-finance-data/any-transaction-one-committee-another-file-description/",
-        headerFile: "data_dictionaries/oth_header_file.csv"
+        headerFile: "metadata/header-files/oth_header_file.csv"
     },
 
     // 10. Operating expenditures
@@ -296,7 +296,7 @@ export const bulkDataSections = [
             { year: "2003–2004", url: "operating-expenditures/oppexp04.zip" }
         ],          
         dataDescription: "/campaign-finance-data/operating-expenditures-file-description/",
-        headerFile: "data_dictionaries/oppexp_header_file.csv"
+        headerFile: "metadata/header-files/oppexp_header_file.csv"
     },
 
     // // 11. Electronically filed reports (.fec files)

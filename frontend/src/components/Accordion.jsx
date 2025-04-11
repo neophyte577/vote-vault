@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Download } from 'lucide-react';
+import DescriptionModal from './DescriptionModal';
+import bulkData from '../assets/bulkDataDictionaries.json';
 
 export default function Accordion({ section }) {
   const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleDownload = async (urlPath) => {
     try {
       const response = await fetch(`/raw?url=${encodeURIComponent(urlPath)}`);
       const data = await response.json();
-  
+
       if (data.download_url) {
         window.open(data.download_url, "_blank");
       } else {
@@ -18,6 +21,9 @@ export default function Accordion({ section }) {
       console.error("Error fetching signed URL:", err);
     }
   };
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
 
   return (
     <div className="border rounded-2xl shadow p-4 bg-card">
@@ -51,31 +57,40 @@ export default function Accordion({ section }) {
             </ul>
           )}
 
-          {section.dataDescription && (
+          {section.dataDescriptionKey && (
             <p className="pt-2">
-              <a
-                href={section.dataDescription}
+              <button
+                onClick={handleOpenModal}
                 className="text-mutedAmber hover:underline"
-                target="_blank"
               >
                 Data description for this file →
-              </a>
+              </button>
             </p>
           )}
 
           {section.headerFile && (
             <p>
-              <a
-                href={section.headerFile}
-                className="text-mutedAmber hover:underline"
-                download
+              <button
+                onClick={() => handleDownload(section.headerFile)}
+                className="text-mutedAmber hover:underline cursor-pointer flex items-center gap-2"
               >
                 Header file
-              </a>
+              </button>
             </p>
           )}
 
           <p className="text-base text-muted-foreground">{section.description}</p>
+
+          {section.dataDescriptionKey && (
+            <DescriptionModal
+              open={modalOpen}
+              onClose={handleCloseModal}
+              title={bulkData[section.dataDescriptionKey].title}
+              subtitle={bulkData[section.dataDescriptionKey].tableTitle}
+              description={bulkData[section.dataDescriptionKey].blurb}
+              data={bulkData[section.dataDescriptionKey].columns}
+            />
+          )}
         </div>
       )}
     </div>

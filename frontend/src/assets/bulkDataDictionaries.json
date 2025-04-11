@@ -1,0 +1,144 @@
+{   
+    "candidate_master": {
+        "title": "Candidate Master File Description",
+        "blurb": "<p>The candidate master file contains basic information for each candidate, including:</p><ul><li>Candidates who have filed a Statement of Candidacy (Form 2) for the upcoming election</li><li>Candidates who have active campaign committees without regard to election year</li><li>Candidates who are referenced as a part of a draft committee or a nonconnected committee that registers as supporting or opposing a particular candidate</li></ul><p>The file shows the candidate's identification number, candidate’s name, party affiliation, election year, office state, office sought, district, incumbent/challenger status, status as a candidate, name of the candidate’s principal campaign committee, and address. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+        "tableTitle": "Candidate Master File Format",
+        "columns": [
+            {
+            "columnName": "CAND_ID",
+            "fieldName": "Candidate identification",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2(9)",
+            "description": "A 9-character alpha-numeric code assigned to a candidate by the Federal Election Commission. The candidate ID for a specific candidate remains the same across election cycles as long as the candidate is running for the same office.",
+            "example": "H8VA01233"
+            },
+            {
+            "columnName": "CAND_NAME",
+            "fieldName": "Candidate name",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(200)",
+            "description": "",
+            "example": "Martha Washington"
+            },
+            {
+            "columnName": "CAND_PTY_AFFILIATION",
+            "fieldName": "Party affiliation",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(3)",
+            "description": "The political party affiliation reported by the candidate.",
+            "example": "NON"
+            },
+            {
+            "columnName": "CAND_ELECTION_YR",
+            "fieldName": "Year of election",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "Number(4)",
+            "description": "Candidate's election year from a Statement of Candidacy or state ballot list",
+            "example": "2018"
+            },
+            {
+            "columnName": "CAND_OFFICE_ST",
+            "fieldName": "Candidate state",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(2)",
+            "description": "House = state of race; President = US; Senate = state of race",
+            "example": "VA"
+            },
+            {
+            "columnName": "CAND_OFFICE",
+            "fieldName": "Candidate office",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "H = House; P = President; S = Senate",
+            "example": "H"
+            },
+            {
+            "columnName": "CAND_OFFICE_DISTRICT",
+            "fieldName": "Candidate district",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(2)",
+            "description": "Congressional district number; Congressional at-large 00; Senate 00; Presidential 00",
+            "example": "01"
+            },
+            {
+            "columnName": "CAND_ICI",
+            "fieldName": "Incumbent challenger status",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "C = Challenger; I = Incumbent; O = Open Seat",
+            "example": "I"
+            },
+            {
+            "columnName": "CAND_STATUS",
+            "fieldName": "Candidate status",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "C = Statutory candidate; F = Statutory candidate for future election; N = Not yet a statutory candidate; P = Statutory candidate in prior cycle",
+            "example": "C"
+            },
+            {
+            "columnName": "CAND_PCC",
+            "fieldName": "Principal campaign committee",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(9)",
+            "description": "The ID assigned by the Federal Election Commission to the candidate's principal campaign committee for a given election cycle.",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "CAND_ST1",
+            "fieldName": "Mailing address - street",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(34)",
+            "description": "Mailing address - street",
+            "example": "1001 George Washington Hwy"
+            },
+            {
+            "columnName": "CAND_ST2",
+            "fieldName": "Mailing address - street2",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(34)",
+            "description": "Mailing address - street2",
+            "example": "Suite 100"
+            },
+            {
+            "columnName": "CAND_CITY",
+            "fieldName": "Mailing address - city",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(30)",
+            "description": "Mailing address - city",
+            "example": "Alexandria"
+            },
+            {
+            "columnName": "CAND_ST",
+            "fieldName": "Mailing address - state",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(2)",
+            "description": "Mailing address - state",
+            "example": "VA"
+            },
+            {
+            "columnName": "CAND_ZIP",
+            "fieldName": "Mailing address - ZIP code",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(9)",
+            "description": "Mailing address - ZIP code",
+            "example": "22201"
+            }
+        ]
+    }
+}

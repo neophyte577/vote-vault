@@ -10,7 +10,6 @@
   font-family: 'Oxanium', sans-serif;
 }
 
-
 @theme {
   --font-display: "Roboto", "sans-serif";
   --color-cream: #FFF5E1;
@@ -18,7 +17,8 @@
   --color-paleHoney: #FCE5B1;
   --color-butterCream: #FFE8A1;
   --color-mutedAmber: #EAC878;
-  --color-mutedBlack: #0A0A0A
+  --color-mutedBlack: #0A0A0A;
+  --color-graphite: #121212
 }
 
 @theme {
