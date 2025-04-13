@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import MobileMenu from '../components/MobileMenu';
 import { ContentLoadContext } from '../contexts/ContentLoadContext'; 
@@ -14,6 +14,7 @@ const MainLayout = () => {
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <ContentLoadContext.Provider value={setIsContentLoaded}>
         <Outlet />
+        <ScrollRestoration />
       </ContentLoadContext.Provider>
     </>
   );

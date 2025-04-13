@@ -5,7 +5,7 @@ const DownloadPage = () => {
   return (
     <div className="w-full h-screen relative overflow-hidden">
         <FlickeringGrid className="absolute inset-0 w-full h-full pointer-events-none" />
-        <div className="absolute mt-5 md:mt-10 inset-0 flex items-center justify-center">
+        <div className="absolute mt-7 md:mt-10 inset-0 flex items-center justify-center">
             <DownloadForm />
         </div>
     </div>

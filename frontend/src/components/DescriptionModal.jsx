@@ -33,7 +33,7 @@ export default function DescriptionModal({ open, onClose, title, subtitle, descr
     >
       <div className="relative w-full h-full flex items-start justify-center px-4 md:px-12 py-8">
         <div
-          className="glass bg-mutedBlack/70 text-paleHoney rounded-2xl shadow-xl w-full h-full overflow-hidden flex flex-col"
+          className="glass bg-mutedBlack/70 text-paleHoney border border-paleHoney rounded-2xl shadow-xl w-full h-full overflow-hidden flex flex-col"
           onClick={(e) => e.stopPropagation()}
           role="dialog"
           aria-modal="true"
