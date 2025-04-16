@@ -1,9 +1,286 @@
 {   
+    "all_candidates": {
+    "title": "All Candidates File Description",
+    "blurb": "<p>The all candidates file contains summary financial information for each candidate who raised or spent money during the period, regardless of when they are up for election.</p><p>The file has one record per candidate and shows information about the candidate, total receipts, transfers received from authorized committees, total disbursements, transfers given to authorized committees, cash-on-hand totals, loans and debts, and other financial summary information.&nbsp;The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p><h3>Data timing</h3><p>This file is completely dependent on summary information reported by the campaign. The time period covered by this file may be more recent than other data files (like the post-cycle candidate summary file). During the primary election season, the period covered may be different for candidates in different states, depending on their primary dates. Since the data is timelier, some of the information in this file is less precise than information in the post-cycle candidate summary file. For example, breakouts by special interest group code are not possible.</p><h3>Double-counted financial activity</h3><p>A candidate’s financial summary may have double-counted financial activity. If a candidate has more than one committee authorized to raise and spend funds on their behalf, the activity in this file combines these committees. If the committees transfer funds back and forth to each other, this activity would be counted twice. Information about “transfers to authorized committees” and “transfers from authorized committees” is included in the file. If there are values in both of these fields, subtract these from the total receipts and total disbursements for a more accurate value of the candidate’s total activity.</p>",
+    "tableTitle": "All Candidates File Format",
+    "columns": [
+            {
+                "columnName": "CAND_ID",
+                "fieldName": "Candidate identification",
+                "position": "1",
+                "nullable": "N",
+                "dataType": "VARCHAR2 (9)",
+                "description": "",
+                "example": "H8VA01233"
+            },
+            {
+                "columnName": "CAND_NAME",
+                "fieldName": "Candidate name",
+                "position": "2",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(200)",
+                "description": "",
+                "example": "Martha Washington"
+            },
+            {
+                "columnName": "CAND_ICI",
+                "fieldName": "Incumbent challenger status",
+                "position": "3",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(1)",
+                "description": "",
+                "example": "I"
+            },
+            {
+                "columnName": "PTY_CD",
+                "fieldName": "Party code",
+                "position": "4",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(1)",
+                "description": "",
+                "example": "NON"
+            },
+            {
+                "columnName": "CAND_PTY_AFFILIATION",
+                "fieldName": "Party affiliation",
+                "position": "5",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(3)",
+                "description": "",
+                "example": "NON"
+            },
+            {
+                "columnName": "TTL_RECEIPTS",
+                "fieldName": "Total receipts",
+                "position": "6",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "345,456.34"
+            },
+            {
+                "columnName": "TRANS_FROM_AUTH",
+                "fieldName": "Transfers from authorized committees",
+                "position": "7",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "4000.00"
+            },
+            {
+                "columnName": "TTL_DISB",
+                "fieldName": "Total disbursements",
+                "position": "8",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "175645.21"
+            },
+            {
+                "columnName": "TRANS_TO_AUTH",
+                "fieldName": "Transfers to authorized committees",
+                "position": "9",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "0.00"
+            },
+            {
+                "columnName": "COH_BOP",
+                "fieldName": "Beginning cash",
+                "position": "10",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "845901.23"
+            },
+            {
+                "columnName": "COH_COP",
+                "fieldName": "Ending cash",
+                "position": "11",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "915671.43"
+            },
+            {
+                "columnName": "CAND_CONTRIB",
+                "fieldName": "Contributions from candidate",
+                "position": "12",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "500.00"
+            },
+            {
+                "columnName": "CAND_LOANS",
+                "fieldName": "Loans from candidate",
+                "position": "13",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "250000.00"
+            },
+            {
+                "columnName": "OTHER_LOANS",
+                "fieldName": "Other loans",
+                "position": "14",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "0.00"
+            },
+            {
+                "columnName": "CAND_LOAN_REPAY",
+                "fieldName": "Candidate loan repayments",
+                "position": "15",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "100000.00"
+            },
+            {
+                "columnName": "OTHER_LOAN_REPAY",
+                "fieldName": "Other loan repayments",
+                "position": "16",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "0.00"
+            },
+            {
+                "columnName": "DEBTS_OWED_BY",
+                "fieldName": "Debts owed by",
+                "position": "17",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "250.00"
+            },
+            {
+                "columnName": "TTL_INDIV_CONTRIB",
+                "fieldName": "Total individual contributions",
+                "position": "18",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "450000.00"
+            },
+            {
+                "columnName": "CAND_OFFICE_ST",
+                "fieldName": "Candidate state",
+                "position": "19",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(2)",
+                "description": "",
+                "example": "VA"
+            },
+            {
+                "columnName": "CAND_OFFICE_DISTRICT",
+                "fieldName": "Candidate district",
+                "position": "20",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(2)",
+                "description": "",
+                "example": "01"
+            },
+            {
+                "columnName": "SPEC_ELECTION",
+                "fieldName": "Special election status",
+                "position": "21",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(1)",
+                "description": "Election result data included in 1996-2006 files only.",
+                "example": "W"
+            },
+            {
+                "columnName": "PRIM_ELECTION",
+                "fieldName": "Primary election status",
+                "position": "22",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(1)",
+                "description": "Election result data included in 1996-2006 files only.",
+                "example": "L"
+            },
+            {
+                "columnName": "RUN_ELECTION",
+                "fieldName": "Runoff election status",
+                "position": "23",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(1)",
+                "description": "Election result data included in 1996-2006 files only.",
+                "example": "L"
+            },
+            {
+                "columnName": "GEN_ELECTION",
+                "fieldName": "General election status",
+                "position": "24",
+                "nullable": "Y",
+                "dataType": "VARCHAR2(1)",
+                "description": "Election result data included in 1996-2006 files only.",
+                "example": "W"
+            },
+            {
+                "columnName": "GEN_ELECTION_PRECENT",
+                "fieldName": "General election percentage",
+                "position": "25",
+                "nullable": "Y",
+                "dataType": "Number(7,4)",
+                "description": "Election result data included in 1996-2006 files only.",
+                "example": "63.2"
+            },
+            {
+                "columnName": "OTHER_POL_CMTE_CONTRIB",
+                "fieldName": "Contributions from other political committees",
+                "position": "26",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "200000.00"
+            },
+            {
+                "columnName": "POL_PTY_CONTRIB",
+                "fieldName": "Contributions from party committees",
+                "position": "27",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "200000.00"
+            },
+            {
+                "columnName": "CVG_END_DT",
+                "fieldName": "Coverage end date",
+                "position": "28",
+                "nullable": "Y",
+                "dataType": "DATE(MM/DD/YYYY)",
+                "description": "Through date",
+                "example": "10/19/2018"
+            },
+            {
+                "columnName": "INDIV_REFUNDS",
+                "fieldName": "Refunds to individuals",
+                "position": "29",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "4000.00"
+            },
+            {
+                "columnName": "CMTE_REFUNDS",
+                "fieldName": "Refunds to committees",
+                "position": "30",
+                "nullable": "Y",
+                "dataType": "Number(14,2)",
+                "description": "",
+                "example": "100.00"
+            }
+        ]
+    },
     "candidate_master": {
-        "title": "Candidate Master File Description",
-        "blurb": "<p>The candidate master file contains basic information for each candidate, including:</p><ul><li>Candidates who have filed a Statement of Candidacy (Form 2) for the upcoming election</li><li>Candidates who have active campaign committees without regard to election year</li><li>Candidates who are referenced as a part of a draft committee or a nonconnected committee that registers as supporting or opposing a particular candidate</li></ul><p>The file shows the candidate's identification number, candidate’s name, party affiliation, election year, office state, office sought, district, incumbent/challenger status, status as a candidate, name of the candidate’s principal campaign committee, and address. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
-        "tableTitle": "Candidate Master File Format",
-        "columns": [
+    "title": "Candidate Master File Description",
+    "blurb": "<p>The candidate master file contains basic information for each candidate, including:</p><ul><li>Candidates who have filed a Statement of Candidacy (Form 2) for the upcoming election</li><li>Candidates who have active campaign committees without regard to election year</li><li>Candidates who are referenced as a part of a draft committee or a nonconnected committee that registers as supporting or opposing a particular candidate</li></ul><p>The file shows the candidate's identification number, candidate’s name, party affiliation, election year, office state, office sought, district, incumbent/challenger status, status as a candidate, name of the candidate’s principal campaign committee, and address. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Candidate Master File Format",
+    "columns": [
             {
             "columnName": "CAND_ID",
             "fieldName": "Candidate identification",
@@ -28,7 +305,7 @@
             "position": "3",
             "nullable": "Y",
             "dataType": "VARCHAR2(3)",
-            "description": "The political party affiliation reported by the candidate.",
+            "description": "The political party affiliation reported by the candidate. <a href=\"https://www.fec.gov/campaign-finance-data/party-code-descriptions/\">List of political party codes</a>",
             "example": "NON"
             },
             {
@@ -73,7 +350,7 @@
             "position": "8",
             "nullable": "Y",
             "dataType": "VARCHAR2(1)",
-            "description": "C = Challenger; I = Incumbent; O = Open Seat",
+            "description": "C = Challenger; I = Incumbent; O = Open Seat (used to indicate an open seat where the incumbent never sought re-election)",
             "example": "I"
             },
             {
@@ -138,6 +415,1575 @@
             "dataType": "VARCHAR2(9)",
             "description": "Mailing address - ZIP code",
             "example": "22201"
+            }
+        ]
+    },
+    "cand_comm_link": {
+    "title": "Candidate-Committee Linkage File Description",
+    "blurb": "<p>The candidate-committee linkage file contains information linking the candidate's information to information about his or her committee.</p><p>This file shows the candidate’s identification number, candidate’s election year, FEC election year, committee identification number, committee type, committee designation, and a linkage identification number. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Candidate-Committee Linkage File Format",
+    "columns": [
+            {
+            "columnName": "CAND_ID",
+            "fieldName": "Candidate identification",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2 (9)",
+            "description": "A 9-character alpha-numeric code assigned to a candidate by the Federal Election Commission. The candidate ID for a specific candidate remains the same across election cycles as long as the candidate is running for the same office.",
+            "example": "H8VA01233"
+            },
+            {
+            "columnName": "CAND_ELECTION_YR",
+            "fieldName": "Candidate election year",
+            "position": "2",
+            "nullable": "N",
+            "dataType": "NUMBER (4)",
+            "description": "Candidate's election year",
+            "example": "2018"
+            },
+            {
+            "columnName": "FEC_ELECTION_YR",
+            "fieldName": "FEC election year",
+            "position": "3",
+            "nullable": "N",
+            "dataType": "NUMBER (4)",
+            "description": "Active 2-year period",
+            "example": "2018"
+            },
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Committee identification",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission. The committee ID for a specific committee always remains the same.",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "CMTE_TP",
+            "fieldName": "Committee type",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "<a href=\"https://www.fec.gov/campaign-finance-data/committee-type-code-descriptions\">List of committee type codes</a>",
+            "example": "H"
+            },
+            {
+            "columnName": "CMTE_DSGN",
+            "fieldName": "Committee designation",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "A = Authorized by a candidate<br>B = Lobbyist/Registrant PAC<br>D = Leadership PAC<br>J = Joint fundraiser<br>P = Principal campaign committee of a candidate<br>U = Unauthorized",
+            "example": "A"
+            },
+            {
+            "columnName": "LINKAGE_ID",
+            "fieldName": "Linkage ID",
+            "position": "7",
+            "nullable": "N",
+            "dataType": "NUMBER (12)",
+            "description": "Unique link ID",
+            "example": "123456789012"
+            }
+        ]
+    },
+    "congressional_campaigns": {
+    "title": "Current Campaigns for House and Senate File Description",
+    "blurb": "<p>The current campaigns for House and Senate file contains summary financial information for each campaign committee.</p><p>The file has one record per House and Senate campaign committee and shows information about the candidate, total receipts, transfers received from authorized committees, total disbursements, transfers given to authorized committees, cash-on-hand totals, loans and debts, and other financial summary information. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p><h3>Data timing</h3><p>This file is completely dependent on summary information reported by the campaign. The time period covered by this file may be more recent than other data files (like the post-cycle candidate summary file). During the primary election season, the period covered may be different for candidates in different states, depending on their primary dates. Since the data is timelier, some of the information in this file is less precise than information in the post-cycle candidate summary file. For example, “other political committees” contains PAC contributions but may also contain contributions from other candidates and some other types of committees that are not usually categorized as PACs.</p><h3>Double-counted financial activity</h3><p>A candidate’s financial summary may have double-counted financial activity. If a candidate has more than one committee authorized to raise and spend funds on their behalf, the activity in this file combines these committees. If the committees transfer funds back and forth to each other, this activity would be counted twice. Information about “transfers to authorized committees” and “transfers from authorized committees” is included in the file. If there are values in both of these fields, subtract these from the total receipts and total disbursements for a more accurate value of the candidate’s total activity.</p>",
+    "tableTitle": "Current Campaigns for House and Senate File Format",
+    "columns": [
+            {
+            "columnName": "CAND_ID",
+            "fieldName": "Candidate identification",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2 (9)",
+            "description": "",
+            "example": "H8VA01233"
+            },
+            {
+            "columnName": "CAND_NAME",
+            "fieldName": "Candidate name",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(200)",
+            "description": "",
+            "example": "Martha Washington"
+            },
+            {
+            "columnName": "CAND_ICI",
+            "fieldName": "Incumbent challenger status",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "",
+            "example": "I"
+            },
+            {
+            "columnName": "PTY_CD",
+            "fieldName": "Party code",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "",
+            "example": "NON"
+            },
+            {
+            "columnName": "CAND_PTY_AFFILIATION",
+            "fieldName": "Party affiliation",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(3)",
+            "description": "",
+            "example": "NON"
+            },
+            {
+            "columnName": "TTL_RECEIPTS",
+            "fieldName": "Total receipts",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "345,456.34"
+            },
+            {
+            "columnName": "TRANS_FROM_AUTH",
+            "fieldName": "Transfers from authorized committees",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "4000.00"
+            },
+            {
+            "columnName": "TTL_DISB",
+            "fieldName": "Total disbursements",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "175645.21"
+            },
+            {
+            "columnName": "TRANS_TO_AUTH",
+            "fieldName": "Transfers to authorized committees",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "COH_BOP",
+            "fieldName": "Beginning cash",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "845901.23"
+            },
+            {
+            "columnName": "COH_COP",
+            "fieldName": "Ending cash",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "915671.43"
+            },
+            {
+            "columnName": "CAND_CONTRIB",
+            "fieldName": "Contributions from candidate",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "500.00"
+            },
+            {
+            "columnName": "CAND_LOANS",
+            "fieldName": "Loans from candidate",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "250000.00"
+            },
+            {
+            "columnName": "OTHER_LOANS",
+            "fieldName": "Other loans",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "CAND_LOAN_REPAY",
+            "fieldName": "Candidate loan repayments",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "100000.00"
+            },
+            {
+            "columnName": "OTHER_LOAN_REPAY",
+            "fieldName": "Other loan repayments",
+            "position": "16",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "DEBTS_OWED_BY",
+            "fieldName": "Debts owed by",
+            "position": "17",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "250.00"
+            },
+            {
+            "columnName": "TTL_INDIV_CONTRIB",
+            "fieldName": "Total individual contributions",
+            "position": "18",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "450000.00"
+            },
+            {
+            "columnName": "CAND_OFFICE_ST",
+            "fieldName": "Candidate state",
+            "position": "19",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(2)",
+            "description": "",
+            "example": "VA"
+            },
+            {
+            "columnName": "CAND_OFFICE_DISTRICT",
+            "fieldName": "Candidate district",
+            "position": "20",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(2)",
+            "description": "",
+            "example": "01"
+            },
+            {
+            "columnName": "SPEC_ELECTION",
+            "fieldName": "Special election status",
+            "position": "21",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "Election result data included in 1996-2006 files only.",
+            "example": "W"
+            },
+            {
+            "columnName": "PRIM_ELECTION",
+            "fieldName": "Primary election status",
+            "position": "22",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "Election result data included in 1996-2006 files only.",
+            "example": "L"
+            },
+            {
+            "columnName": "RUN_ELECTION",
+            "fieldName": "Runoff election status",
+            "position": "23",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "Election result data included in 1996-2006 files only.",
+            "example": "W"
+            },
+            {
+            "columnName": "GEN_ELECTION",
+            "fieldName": "General election status",
+            "position": "24",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "Election result data included in 1996-2006 files only.",
+            "example": "L"
+            },
+            {
+            "columnName": "GEN_ELECTION_PRECENT",
+            "fieldName": "General election percentage",
+            "position": "25",
+            "nullable": "Y",
+            "dataType": "Number(7,4)",
+            "description": "Election result data included in 1996-2006 files only.",
+            "example": "63.2"
+            },
+            {
+            "columnName": "OTHER_POL_CMTE_CONTRIB",
+            "fieldName": "Contributions from other political committees",
+            "position": "26",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "200000.00"
+            },
+            {
+            "columnName": "POL_PTY_CONTRIB",
+            "fieldName": "Contributions from party committees",
+            "position": "27",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "200000.00"
+            },
+            {
+            "columnName": "CVG_END_DT",
+            "fieldName": "Coverage end date",
+            "position": "28",
+            "nullable": "Y",
+            "dataType": "DATE(MM/DD/YYYY)",
+            "description": "Through date",
+            "example": "10/19/2018"
+            },
+            {
+            "columnName": "INDIV_REFUNDS",
+            "fieldName": "Refunds to individuals",
+            "position": "29",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "4000.00"
+            },
+            {
+            "columnName": "CMTE_REFUNDS",
+            "fieldName": "Refunds to committees",
+            "position": "30",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "100"
+            }
+        ]
+    },
+    "committee_master": {
+    "title": "Committee Master File Description",
+    "blurb": "<p>The committee master file contains basic information for each committee registered with the Federal Election Commission, including:</p><ul><li>Federal political action committees and party committees</li><li>Campaign committees for presidential, house, and senate candidates</li><li>Groups or organizations spending money for or against candidates for federal office</li></ul><p>The file has one record per committee and shows the committee identification number, committee name, sponsor (when appropriate), treasurer name, committee address, information about the type of committee, and the candidate identification number (for campaign committees). The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Committee Master File Format",
+    "columns": [
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Committee identification",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2(9)",
+            "description": "A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission. Committee IDs are unique and an ID for a specific committee always remains the same.",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "CMTE_NM",
+            "fieldName": "Committee name",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(200)",
+            "description": "",
+            "example": "Martha Washington for Congress"
+            },
+            {
+            "columnName": "TRES_NM",
+            "fieldName": "Treasurer's name",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(90)",
+            "description": "The officially registered treasurer for the committee.",
+            "example": "Alexander Hamilton"
+            },
+            {
+            "columnName": "CMTE_ST1",
+            "fieldName": "Street one",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(34)",
+            "description": "",
+            "example": "1001 George Washington Hwy"
+            },
+            {
+            "columnName": "CMTE_ST2",
+            "fieldName": "Street two",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(34)",
+            "description": "",
+            "example": "Suite 203"
+            },
+            {
+            "columnName": "CMTE_CITY",
+            "fieldName": "City or town",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(30)",
+            "description": "",
+            "example": "Alexandria"
+            },
+            {
+            "columnName": "CMTE_ST",
+            "fieldName": "State",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(2)",
+            "description": "",
+            "example": "VA"
+            },
+            {
+            "columnName": "CMTE_ZIP",
+            "fieldName": "ZIP code",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(9)",
+            "description": "",
+            "example": "22201"
+            },
+            {
+            "columnName": "CMTE_DSGN",
+            "fieldName": "Committee designation",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "A = Authorized by a candidate<br>B = Lobbyist/Registrant PAC<br>D = Leadership PAC<br>J = Joint fundraiser<br>P = Principal campaign committee of a candidate<br>U = Unauthorized",
+            "example": "A"
+            },
+            {
+            "columnName": "CMTE_TP",
+            "fieldName": "Committee type",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "<a href=\"https://www.fec.gov/campaign-finance-data/committee-type-code-descriptions\">List of committee type codes</a>",
+            "example": "H"
+            },
+            {
+            "columnName": "CMTE_PTY_AFFILIATION",
+            "fieldName": "Committee party",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(3)",
+            "description": "<a href=\"https://www.fec.gov/campaign-finance-data/party-code-descriptions\">List of party codes</a>",
+            "example": "NON"
+            },
+            {
+            "columnName": "CMTE_FILING_FREQ",
+            "fieldName": "Filing frequency",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "A = Administratively terminated<br>D = Debt<br>M = Monthly filer<br>Q = Quarterly filer<br>T = Terminated<br>W = Waived",
+            "example": "Q"
+            },
+            {
+            "columnName": "ORG_TP",
+            "fieldName": "Interest group category",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "C = Corporation<br>L = Labor organization<br>M = Membership organization<br>T = Trade association<br>V = Cooperative<br>W = Corporation without capital stock",
+            "example": "C"
+            },
+            {
+            "columnName": "CONNECTED_ORG_NM",
+            "fieldName": "Connected organization's name",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(200)",
+            "description": "",
+            "example": "Widgets, Incorporated"
+            },
+            {
+            "columnName": "CAND_ID",
+            "fieldName": "Candidate identification",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(9)",
+            "description": "When a committee has a committee type designation of H, S, or P, the candidate's identification number will be entered in this field.",
+            "example": "H1VA01225"
+            }
+        ]
+    },
+    "pac_summary": {
+    "title": "PAC and Party Summary File Description",
+    "blurb": "<p>The PAC and party summary file contains summary financial information for each PAC and party committee.</p><p>The file has one record per PAC and party committee and shows information about the committee, total receipts and disbursements, receipts and disbursements broken down by type, contributions to other committees, independent expenditures made by the committee, and other financial summary information. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "PAC and Party Summary File Format",
+    "columns": [
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Committee identification",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2(9)",
+            "description": "",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "CMTE_NM",
+            "fieldName": "Committee name",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(200)",
+            "description": "",
+            "example": "National Finance Political Action Committee"
+            },
+            {
+            "columnName": "CMTE_TP",
+            "fieldName": "Committee type",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "",
+            "example": "Q"
+            },
+            {
+            "columnName": "CMTE_DSGN",
+            "fieldName": "Committee designation",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "",
+            "example": "U"
+            },
+            {
+            "columnName": "CMTE_FILING_FREQ",
+            "fieldName": "Committee filing frequency",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2(1)",
+            "description": "",
+            "example": "M"
+            },
+            {
+            "columnName": "TTL_RECEIPTS",
+            "fieldName": "Total receipts",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "150000.00"
+            },
+            {
+            "columnName": "TRANS_FROM_AFF",
+            "fieldName": "Transfers from affiliates",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "INDV_CONTRIB",
+            "fieldName": "Contributions from individuals",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "100000.00"
+            },
+            {
+            "columnName": "OTHER_POL_CMTE_CONTRIB",
+            "fieldName": "Contributions from other political committees",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "50000.00"
+            },
+            {
+            "columnName": "CAND_CONTRIB",
+            "fieldName": "Contributions from candidate",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "Not applicable",
+            "example": ""
+            },
+            {
+            "columnName": "CAND_LOANS",
+            "fieldName": "Candidate loans",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "Not applicable",
+            "example": ""
+            },
+            {
+            "columnName": "TTL_LOANS_RECEIVED",
+            "fieldName": "Total loans received",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "TTL_DISB",
+            "fieldName": "Total disbursements",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "145000.00"
+            },
+            {
+            "columnName": "TRANF_TO_AFF",
+            "fieldName": "Transfers to affiliates",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "INDV_REFUNDS",
+            "fieldName": "Refunds to individuals",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "OTHER_POL_CMTE_REFUNDS",
+            "fieldName": "Refunds to other political committees",
+            "position": "16",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "CAND_LOAN_REPAY",
+            "fieldName": "Candidate loan repayments",
+            "position": "17",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "Not applicable",
+            "example": ""
+            },
+            {
+            "columnName": "LOAN_REPAY",
+            "fieldName": "Loan repayments",
+            "position": "18",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "COH_BOP",
+            "fieldName": "Cash beginning of period",
+            "position": "19",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "304000.00"
+            },
+            {
+            "columnName": "COH_COP",
+            "fieldName": "Cash close of period",
+            "position": "20",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "315000.00"
+            },
+            {
+            "columnName": "DEBTS_OWED_BY",
+            "fieldName": "Debts owed by",
+            "position": "21",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "NONFED_TRANS_RECEIVED",
+            "fieldName": "Nonfederal transfers received",
+            "position": "22",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "CONTRIB_TO_OTHER_CMTE",
+            "fieldName": "Contributions to other committees",
+            "position": "23",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "75000.00"
+            },
+            {
+            "columnName": "IND_EXP",
+            "fieldName": "Independent expenditures",
+            "position": "24",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "10000.00"
+            },
+            {
+            "columnName": "PTY_COORD_EXP",
+            "fieldName": "Party coordinated expenditures",
+            "position": "25",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "NONFED_SHARE_EXP",
+            "fieldName": "Nonfederal share expenditures",
+            "position": "26",
+            "nullable": "Y",
+            "dataType": "Number(14,2)",
+            "description": "",
+            "example": "0.00"
+            },
+            {
+            "columnName": "CVG_END_DT",
+            "fieldName": "Coverage end date",
+            "position": "27",
+            "nullable": "Y",
+            "dataType": "DATE(MM/DD/YYYY)",
+            "description": "Through date",
+            "example": "04/30/2018"
+            }
+        ]
+    },
+    "individual_contributions": {
+    "title": "Contributions by Individuals File Description",
+    "blurb": "<p>The contributions by individuals file contains information for contributions given by individuals. The method used to include contributions in this file has changed over time.</p><h3>2015 - present: greater than $200</h3><p>A contribution will be included if:</p><ul><li>The contribution’s election cycle-to-date amount is over $200 for contributions to candidate committees</li><li>The contribution’s calendar year-to-date amount is over $200 for contributions to political action committees (PACs) and party committees.</li></ul><h3>1989 - 2014: $200 and above</h3><p>A contribution will be included if the reporting period amount is $200 or more.</p><h3>1975 - 1988: $500 and above</h3><p>A contribution will be included if the reporting period amount is $500 or more.</p><p>The file contains information about the committee receiving the contribution, the report where the contribution is disclosed, the individual giving the contribution, the contribution’s date, amount, and additional information about the contribution (if provided). The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Contributions by Individuals File Format",
+    "columns": [
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Filer identification number",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2 (9)",
+            "description": "A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "AMNDT_IND",
+            "fieldName": "Amendment indicator",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "Indicates if the report being filed is new (N), an amendment (A) to a previous report or a termination (T) report.",
+            "example": "N"
+            },
+            {
+            "columnName": "RPT_TP",
+            "fieldName": "Report type",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Indicates the type of report filed <a href=\"https://www.fec.gov/campaign-finance-data/report-type-code-descriptions\">List of report type codes</a>",
+            "example": "12G"
+            },
+            {
+            "columnName": "TRANSACTION_PGI",
+            "fieldName": "Primary-general indicator",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (5)",
+            "description": "This code indicates the election for which the contribution was made. EYYYY (election plus election year)<br>P = Primary<br>G = General<br>O = Other<br>C = Convention<br>R = Runoff<br>S = Special<br>E = Recount",
+            "example": "P2018"
+            },
+            {
+            "columnName": "IMAGE_NUM",
+            "fieldName": "Image number",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (11) or VARCHAR2(18)",
+            "description": "11-digit Image Number Format<br>YYOORRRFFFF<br>YY - scanning year<br>OO - office (01 - House, 02 - Senate, 03 - FEC Paper, 90-99- FEC Electronic)<br>RRR - reel number<br>FFFF- frame number<br><br>18-digit Image Number Format (June 29, 2015)<br>YYYYMMDDSSPPPPPPPP<br>YYYY - scanning year<br>MM - scanning month<br>DD - scanning day<br>SS - source (02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>PPPPPPPP - page (reset to zero every year on January 1)",
+            "example": "201810170912345678"
+            },
+            {
+            "columnName": "TRANSACTION_TP",
+            "fieldName": "Transaction type",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Transaction types 10, 11, 15, 15C, 15E, 15I, 15T, 19, 22Y, 24I, 24T, 20Y and 21Y are included in the INDIV file. Beginning with 2016 transaction types 30, 30T, 31, 31T, 32, 32T, 40T, 40Y, 41T, 41Y, 42T and 42Y are included in the INDIV file. Beginning with 2020 transaction types 30E, 31E and 32E are also included in the INDIV file.<br>For more information about transaction type codes see this <a href=\"https://www.fec.gov/campaign-finance-data/transaction-type-code-descriptions\">list of transaction type codes</a>",
+            "example": "30T"
+            },
+            {
+            "columnName": "ENTITY_TP",
+            "fieldName": "Entity type",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS received after April 2002.<br>CAN = Candidate<br>CCM = Candidate Committee<br>COM = Committee<br>IND = Individual (a person)<br>ORG = Organization (not a committee and not a person)<br>PAC = Political Action Committee<br>PTY = Party Organization",
+            "example": "IND"
+            },
+            {
+            "columnName": "NAME",
+            "fieldName": "Contributor/Lender/Transfer Name",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (200)",
+            "description": "",
+            "example": "Abigail Adams"
+            },
+            {
+            "columnName": "CITY",
+            "fieldName": "City",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (30)",
+            "description": "",
+            "example": "Braintree"
+            },
+            {
+            "columnName": "STATE",
+            "fieldName": "State",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (2)",
+            "description": "",
+            "example": "MA"
+            },
+            {
+            "columnName": "ZIP_CODE",
+            "fieldName": "ZIP code",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "",
+            "example": "02184"
+            },
+            {
+            "columnName": "EMPLOYER",
+            "fieldName": "Employer",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (38)",
+            "description": "",
+            "example": "Self employed"
+            },
+            {
+            "columnName": "OCCUPATION",
+            "fieldName": "Occupation",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (38)",
+            "description": "",
+            "example": "Homemaker"
+            },
+            {
+            "columnName": "TRANSACTION_DT",
+            "fieldName": "Transaction date (MMDDYYYY)",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "DATE",
+            "description": "",
+            "example": "10132018"
+            },
+            {
+            "columnName": "TRANSACTION_AMT",
+            "fieldName": "Transaction amount",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "NUMBER (14,2)",
+            "description": "",
+            "example": "1000.00"
+            },
+            {
+            "columnName": "OTHER_ID",
+            "fieldName": "Other identification number",
+            "position": "16",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "For contributions from individuals this column is null. For contributions from candidates or other committees this column will contain that contributor's FEC ID.",
+            "example": "C00100309"
+            },
+            {
+            "columnName": "TRAN_ID",
+            "fieldName": "Transaction ID",
+            "position": "17",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (32)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS. A unique identifier associated with each itemization or transaction appearing in an FEC electronic file. A transaction ID is unique for a specific committee for a specific report.",
+            "example": "SA11A1A.8317"
+            },
+            {
+            "columnName": "FILE_NUM",
+            "fieldName": "File number / Report ID",
+            "position": "18",
+            "nullable": "Y",
+            "dataType": "NUMBER (22)",
+            "description": "Unique report id",
+            "example": "1197695"
+            },
+            {
+            "columnName": "MEMO_CD",
+            "fieldName": "Memo code",
+            "position": "19",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "'X' indicates that the amount of the transaction is not incorporated into the total figure disclosed on the detailed summary page of the committee’s report. 'X' may also indicate that the amount was received as part of a partnership contribution, received and forwarded as an earmarked contribution, or that a transaction was previously reported. When using the bulk data file these memo items should be included in your analysis.",
+            "example": "X"
+            },
+            {
+            "columnName": "MEMO_TEXT",
+            "fieldName": "Memo text",
+            "position": "20",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (100)",
+            "description": "A description of the activity. Memo Text is available on itemized amounts on Schedules A and B. These transactions are included in the itemization total.",
+            "example": "Reattributed from John Adams 10/5/18"
+            },
+            {
+            "columnName": "SUB_ID",
+            "fieldName": "FEC record number",
+            "position": "21",
+            "nullable": "N",
+            "dataType": "NUMBER (19)",
+            "description": "Unique row ID",
+            "example": "1234567891234567891"
+            }
+        ]
+    },
+    "committee_contributions": {
+    "title": "Contributions from Committees to Candidates File Description",
+    "blurb": "<p>The contributions from committees to candidates file is a subset of the itemized records (OTH) file and contains each contribution or independent expenditure made by a:</p><ul><li>PAC</li><li>Party committee</li><li>Candidate committee</li><li>Other federal committee</li></ul><p>and given to a candidate during the two-year election cycle.</p><p>The file shows information about the committee expending the money as well as the committee receiving the money, the amount given, and the date it was given, and other information. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Contributions from Committees to Candidates File Format",
+    "columns": [
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Filer identification number",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2 (9)",
+            "description": "A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "AMNDT_IND",
+            "fieldName": "Amendment indicator",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "Indicates if the report being filed is new (N), an amendment (A) to a previous report or a termination (T) report.",
+            "example": "A"
+            },
+            {
+            "columnName": "RPT_TP",
+            "fieldName": "Report type",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Indicates the type of report filed. List of report type codes",
+            "example": "Q2"
+            },
+            {
+            "columnName": "TRANSACTION_PGI",
+            "fieldName": "Primary-general indicator",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (5)",
+            "description": "This code indicates the election for which the contribution was made. EYYYY (election Primary, General, Other plus election year)",
+            "example": "P2018"
+            },
+            {
+            "columnName": "IMAGE_NUM",
+            "fieldName": "Image number",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (11)<br>or VARCHAR2(18)",
+            "description": "11-digit image number format<br>YYOORRRFFFF<br>YY - scanning year<br>OO - office (01 - House, 02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>RRR - reel number<br>FFFF - frame number<br><br>18-digit image number format (June 29, 2015)<br>YYYYMMDDSSPPPPPPPP<br>YYYY - scanning year<br>MM - scanning month<br>DD - scanning day<br>SS - source (02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>PPPPPPPP - page (reset to zero every year on January 1)",
+            "example": "201810170912341234"
+            },
+            {
+            "columnName": "TRANSACTION_TP",
+            "fieldName": "Transaction type",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Transaction types 24A, 24C, 24E, 24F, 24H, 24K, 24N, 24P, 24R, 24Z are included in the PAS2 file.<br>For more information about transaction type codes see this list of transaction type codes",
+            "example": "24A"
+            },
+            {
+            "columnName": "ENTITY_TP",
+            "fieldName": "Entity type",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS received after April 2002.<br>CAN = Candidate<br>CCM = Candidate Committee<br>COM = Committee<br>IND = Individual (a person)<br>ORG = Organization (not a committee and not a person)<br>PAC = Political Action Committee<br>PTY = Party Organization",
+            "example": "COM"
+            },
+            {
+            "columnName": "NAME",
+            "fieldName": "Contributor/lender/transfer Name",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (200)",
+            "description": "",
+            "example": "Martha Washington for Congress"
+            },
+            {
+            "columnName": "CITY",
+            "fieldName": "City",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (30)",
+            "description": "",
+            "example": "Alexandria"
+            },
+            {
+            "columnName": "STATE",
+            "fieldName": "State",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (2)",
+            "description": "",
+            "example": "VA"
+            },
+            {
+            "columnName": "ZIP_CODE",
+            "fieldName": "ZIP code",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "",
+            "example": "22201"
+            },
+            {
+            "columnName": "EMPLOYER",
+            "fieldName": "Employer",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (38)",
+            "description": "",
+            "example": ""
+            },
+            {
+            "columnName": "OCCUPATION",
+            "fieldName": "Occupation",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (38)",
+            "description": "",
+            "example": ""
+            },
+            {
+            "columnName": "TRANSACTION_DT",
+            "fieldName": "Transaction date (MMDDYYYY)",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "DATE",
+            "description": "",
+            "example": "05112018"
+            },
+            {
+            "columnName": "TRANSACTION_AMT",
+            "fieldName": "Transaction amount",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "NUMBER (14,2)",
+            "description": "",
+            "example": "5000.00"
+            },
+            {
+            "columnName": "OTHER_ID",
+            "fieldName": "Other identification number",
+            "position": "16",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "For contributions from individuals this column is null. For contributions from candidates or other committees this column will contain the recipient's FEC ID.",
+            "example": "C00100502"
+            },
+            {
+            "columnName": "CAND_ID",
+            "fieldName": "Candidate ID",
+            "position": "17",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "A 9-character alpha-numeric code assigned to a candidate by the Federal Election Commission. The candidate ID for a specific candidate remains the same across election cycles as long as the candidate is running for the same office.",
+            "example": "H8VA01233"
+            },
+            {
+            "columnName": "TRAN_ID",
+            "fieldName": "Transaction ID",
+            "position": "18",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (32)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS. A unique identifier associated with each itemization or transaction appearing in an FEC electronic file. A transaction ID is unique for a specific committee for a specific report.",
+            "example": "SA11AI.8317"
+            },
+            {
+            "columnName": "FILE_NUM",
+            "fieldName": "File number / Report ID",
+            "position": "19",
+            "nullable": "Y",
+            "dataType": "NUMBER (22)",
+            "description": "Unique report id",
+            "example": "1197695"
+            },
+            {
+            "columnName": "MEMO_CD",
+            "fieldName": "Memo code",
+            "position": "20",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "'X' indicates that the amount of the transaction is not incorporated into the total figure disclosed on the detailed summary page of the committee’s report. 'X' may also indicate that the amount was received as part of a joint fundraising transfer or other lump sum contribution required to be attributed to individual contributors. Memo items may be used to denote that a transaction was previously reported or in the case of an independent expenditure, that the amount represents activity that has occurred but has not yet been paid by the committee. When using the bulk data file these memo items should be included in your analysis.",
+            "example": "X"
+            },
+            {
+            "columnName": "MEMO_TEXT",
+            "fieldName": "Memo text",
+            "position": "21",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (100)",
+            "description": "A description of the activity. Memo text is available on itemized amounts on Schedules A and B. These transactions are included in the itemization total.",
+            "example": "Contribution to federal committee"
+            },
+            {
+            "columnName": "SUB_ID",
+            "fieldName": "FEC record number",
+            "position": "22",
+            "nullable": "N",
+            "dataType": "NUMBER (19)",
+            "description": "Unique row ID",
+            "example": "1234567891234567891"
+            }
+        ]
+    },
+    "committee_transactions": {
+    "title": "Any Transaction from One Committee to Another File Description",
+    "blurb": "<p>This file contains each contribution or independent expenditure that one committee gives to another during the two-year election cycle, including:</p><ul><li>PACs</li><li>Party committees</li><li>Candidate committees</li><li>Or other federal committees</li></ul><p>The file shows information about the committee expending the money as well as the committee receiving the money, the amount given, and the date it was given, and other information. The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Any Transaction from One Committee to Another File Format",
+    "columns": [
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Filer identification number",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2 (9)",
+            "description": "A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "AMNDT_IND",
+            "fieldName": "Amendment indicator",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "Indicates if the report being filed is new (N), an amendment (A) to a previous report, or a termination (T) report.",
+            "example": "A"
+            },
+            {
+            "columnName": "RPT_TP",
+            "fieldName": "Report type",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Indicates the type of report filed. List of report type codes",
+            "example": "Q2"
+            },
+            {
+            "columnName": "TRANSACTION_PGI",
+            "fieldName": "Primary-general indicator",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (5)",
+            "description": "This code indicates the election for which the contribution was made. EYYYY (election Primary, General, Other plus election year)",
+            "example": "P2018"
+            },
+            {
+            "columnName": "IMAGE_NUM",
+            "fieldName": "Image number",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (11)<br>or VARCHAR2(18)",
+            "description": "11-digit image number format<br>YYOORRRFFFF<br>YY - scanning year<br>OO - office (01 - House, 02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>RRR - reel number<br>FFFF - frame number<br><br>18-digit image number format (June 29, 2015)<br>YYYYMMDDSSPPPPPPPP<br>YYYY - scanning year<br>MM - scanning month<br>DD - scanning day<br>SS - source (02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>PPPPPPPP - page (reset to zero every year on January 1)",
+            "example": "201810170912341234"
+            },
+            {
+            "columnName": "TRANSACTION_TP",
+            "fieldName": "Transaction type",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Transaction types 10J, 11J, 13, 15J, 15Z, 16C, 16F, 16G, 16R, 17R, 17Z, 18G, 18J, 18K, 18U, 19J, 20, 20C, 20F, 20G, 20R, 22H, 22Z, 23Y, 24A, 24C, 24E, 24F, 24G, 24H, 24K, 24N, 24P, 24R, 24U, 24Z and 29 are included in the OTH file. Beginning with 2016 transaction types 30F, 30G, 30J, 30K, 31F, 31G, 31J, 31K, 32F, 32G, 32J, 32K, 40, 40Z, 41, 41Z, 42 and 42Z are also included in the OTH file.<br>For more information about transaction type codes see this list of transaction type codes",
+            "example": "30F"
+            },
+            {
+            "columnName": "ENTITY_TP",
+            "fieldName": "Entity type",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS received after April 2002.<br>CAN = Candidate<br>CCM = Candidate Committee<br>COM = Committee<br>IND = Individual (a person)<br>ORG = Organization (not a committee and not a person)<br>PAC = Political Action Committee<br>PTY = Party Organization",
+            "example": "COM"
+            },
+            {
+            "columnName": "NAME",
+            "fieldName": "Contributor/lender/transfer Name",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (200)",
+            "description": "",
+            "example": "Martha Washington for Congress"
+            },
+            {
+            "columnName": "CITY",
+            "fieldName": "City",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (30)",
+            "description": "",
+            "example": "Alexandria"
+            },
+            {
+            "columnName": "STATE",
+            "fieldName": "State",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (2)",
+            "description": "",
+            "example": "VA"
+            },
+            {
+            "columnName": "ZIP_CODE",
+            "fieldName": "ZIP code",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "",
+            "example": "22201"
+            },
+            {
+            "columnName": "EMPLOYER",
+            "fieldName": "Employer",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (38)",
+            "description": "",
+            "example": ""
+            },
+            {
+            "columnName": "OCCUPATION",
+            "fieldName": "Occupation",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (38)",
+            "description": "",
+            "example": ""
+            },
+            {
+            "columnName": "TRANSACTION_DT",
+            "fieldName": "Transaction date (MMDDYYYY)",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "DATE",
+            "description": "",
+            "example": "05112018"
+            },
+            {
+            "columnName": "TRANSACTION_AMT",
+            "fieldName": "Transaction amount",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "NUMBER (14,2)",
+            "description": "",
+            "example": "5000.00"
+            },
+            {
+            "columnName": "OTHER_ID",
+            "fieldName": "Other identification number",
+            "position": "16",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "For contributions from individuals this column is null. For contributions from candidates or other committees this column will contain that contributor's FEC ID.",
+            "example": "C00100502"
+            },
+            {
+            "columnName": "TRAN_ID",
+            "fieldName": "Transaction ID",
+            "position": "17",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (32)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS. A unique identifier associated with each itemization or transaction appearing in an FEC electronic file. A transaction ID is unique for a specific committee for a specific report.",
+            "example": "SA11AI.8317"
+            },
+            {
+            "columnName": "FILE_NUM",
+            "fieldName": "File number / Report ID",
+            "position": "18",
+            "nullable": "Y",
+            "dataType": "NUMBER (22)",
+            "description": "Unique report id",
+            "example": "1197695"
+            },
+            {
+            "columnName": "MEMO_CD",
+            "fieldName": "Memo code",
+            "position": "19",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "'X' indicates that the amount of the transaction is not incorporated into the total figure disclosed on the detailed summary page of the committee’s report. 'X' may also indicate that the amount was received as part of a joint fundraising transfer or other lump sum contribution required to be attributed to individual contributors. Memo items may be used to denote that a transaction was previously reported or in the case of an independent expenditure, that the amount represents activity that has occurred but has not yet been paid by the committee. When using the bulk data file these memo items should be included in your analysis.",
+            "example": "X"
+            },
+            {
+            "columnName": "MEMO_TEXT",
+            "fieldName": "Memo text",
+            "position": "20",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (100)",
+            "description": "A description of the activity. Memo text is available on itemized amounts on Schedules A and B. These transactions are included in the itemization total.",
+            "example": "Contribution to federal committee"
+            },
+            {
+            "columnName": "SUB_ID",
+            "fieldName": "FEC record number",
+            "position": "21",
+            "nullable": "N",
+            "dataType": "NUMBER (19)",
+            "description": "Unique row ID",
+            "example": "1234567891234567891"
+            }
+        ]
+    },
+
+    "operating_expenditures": {
+    "title": "Operating Expenditures File Description",
+    "blurb": "<p>The operating expenditures file contains information about disbursements disclosed on FEC reports, including operating expenditures reported on:</p><ul><li>Form 3, Line 17 for House and Senate committees</li><li>Form 3P, Line 23 for Presidential committees</li><li>Form 3X, Lines 21(a)(i), 21(a)(ii), and 21(b) for PAC and Party committees</li></ul><p>For electronic filing committees, operating expenditures are available from the 2004 election cycle to the present.</p><p>For paper filing committees, operating expenditures are available starting October 2005 through the present.</p><p>The file contains information about the committee making the disbursement, the report where the operating expenditure is disclosed, the entity receiving the disbursement, the disbursement’s date, amount, purpose, and additional information about the operating expenditure (if provided). The end-of-line (EOL) marker is line feed <code>'\\n'</code> (LF, 0x0A, 10 in decimal).</p>",
+    "tableTitle": "Operating Expenditures File Format",
+    "columns": [
+            {
+            "columnName": "CMTE_ID",
+            "fieldName": "Filer identification number",
+            "position": "1",
+            "nullable": "N",
+            "dataType": "VARCHAR2 (9)",
+            "description": "Identification number of committee filing report. A 9-character alpha-numeric code assigned to a committee by the Federal Election Commission",
+            "example": "C00100005"
+            },
+            {
+            "columnName": "AMNDT_IND",
+            "fieldName": "Amendment indicator",
+            "position": "2",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "Indicates if the report being filed is new (N), an amendment (A) to a previous report, or a termination (T) report.",
+            "example": "A"
+            },
+            {
+            "columnName": "RPT_YR",
+            "fieldName": "Report year",
+            "position": "3",
+            "nullable": "Y",
+            "dataType": "Number(4)",
+            "description": "",
+            "example": "2018"
+            },
+            {
+            "columnName": "RPT_TP",
+            "fieldName": "Report type",
+            "position": "4",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "Indicates the type of report filed. List of report type codes",
+            "example": "12G"
+            },
+            {
+            "columnName": "IMAGE_NUM",
+            "fieldName": "Image number",
+            "position": "5",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (11) or VARCHAR2(18)",
+            "description": "11-digit Image Number Format<br>YYOORRRFFFF<br>YY - scanning year<br>OO - office (01 - House, 02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>RRR - reel number<br>FFFF- frame number<br><br>18-digit Image Number Format (June 29, 2015)<br>YYYYMMDDSSPPPPPPPP<br>YYYY - scanning year<br>MM - scanning month<br>DD - scanning day<br>SS - source (02 - Senate, 03 - FEC Paper, 90-99 - FEC Electronic)<br>PPPPPPPP - page (reset to zero every year on January 1)",
+            "example": "201810170912341234"
+            },
+            {
+            "columnName": "LINE_NUM",
+            "fieldName": "Line number",
+            "position": "6",
+            "nullable": "Y",
+            "dataType": "",
+            "description": "Indicates FEC form line number",
+            "example": "17"
+            },
+            {
+            "columnName": "FORM_TP_CD",
+            "fieldName": "Form type",
+            "position": "7",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (8)",
+            "description": "Indicates FEC Form",
+            "example": "3"
+            },
+            {
+            "columnName": "SCHED_TP_CD",
+            "fieldName": "Schedule type",
+            "position": "8",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (8)",
+            "description": "Schedule B - Itemized disbursements",
+            "example": "SB"
+            },
+            {
+            "columnName": "NAME",
+            "fieldName": "Contributor/Lender/Transfer Name",
+            "position": "9",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (200)",
+            "description": "",
+            "example": "XYZ Printing"
+            },
+            {
+            "columnName": "CITY",
+            "fieldName": "City",
+            "position": "10",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (30)",
+            "description": "",
+            "example": "Alexandria"
+            },
+            {
+            "columnName": "STATE",
+            "fieldName": "State",
+            "position": "11",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (2)",
+            "description": "",
+            "example": "VA"
+            },
+            {
+            "columnName": "ZIP_CODE",
+            "fieldName": "ZIP code",
+            "position": "12",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (9)",
+            "description": "",
+            "example": "22201"
+            },
+            {
+            "columnName": "TRANSACTION_DT",
+            "fieldName": "Transaction date (MMDDYYYY)",
+            "position": "13",
+            "nullable": "Y",
+            "dataType": "DATE",
+            "description": "",
+            "example": "05112018"
+            },
+            {
+            "columnName": "TRANSACTION_AMT",
+            "fieldName": "Transaction amount",
+            "position": "14",
+            "nullable": "Y",
+            "dataType": "NUMBER (14,2)",
+            "description": "",
+            "example": "512.34"
+            },
+            {
+            "columnName": "TRANSACTION_PGI",
+            "fieldName": "Primary general indicator",
+            "position": "15",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (5)",
+            "description": "",
+            "example": "P2018"
+            },
+            {
+            "columnName": "PURPOSE",
+            "fieldName": "Purpose",
+            "position": "16",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (100)",
+            "description": "",
+            "example": "Printing yard signs"
+            },
+            {
+            "columnName": "CATEGORY",
+            "fieldName": "Disbursement category code",
+            "position": "17",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "001-012 and 101-107",
+            "example": "006"
+            },
+            {
+            "columnName": "CATEGORY_DESC",
+            "fieldName": "Disbursement Category Code Description",
+            "position": "18",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (40)",
+            "description": "List of Disbursement Category Codes and their meaning",
+            "example": "Campaign materials"
+            },
+            {
+            "columnName": "MEMO_CD",
+            "fieldName": "Memo code",
+            "position": "19",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (1)",
+            "description": "'X' indicates that the amount is NOT to be included in the itemization total.",
+            "example": "X"
+            },
+            {
+            "columnName": "MEMO_TEXT",
+            "fieldName": "Memo text",
+            "position": "20",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (100)",
+            "description": "A description of the activity. Memo Text is available on itemized amounts on Schedule B. These transactions are included in the itemization total.",
+            "example": "Credit card payment – AmEx 5/1/18"
+            },
+            {
+            "columnName": "ENTITY_TP",
+            "fieldName": "Entity type",
+            "position": "21",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (3)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS received after April 2002.<br>CAN = Candidate<br>CCM = Candidate committee<br>COM = Committee<br>IND = Individual (a person)<br>ORG = Organization (not a committee and not a person)<br>PAC = Political action committee<br>PTY = Party organization",
+            "example": "ORG"
+            },
+            {
+            "columnName": "SUB_ID",
+            "fieldName": "FEC record number",
+            "position": "22",
+            "nullable": "N",
+            "dataType": "NUMBER (19)",
+            "description": "Unique row ID",
+            "example": "1234567891234567891"
+            },
+            {
+            "columnName": "FILE_NUM",
+            "fieldName": "File number/report ID",
+            "position": "23",
+            "nullable": "Y",
+            "dataType": "NUMBER (7)",
+            "description": "Unique report id",
+            "example": "1197685"
+            },
+            {
+            "columnName": "TRAN_ID",
+            "fieldName": "Transaction ID",
+            "position": "24",
+            "nullable": "",
+            "dataType": "VARCHAR2 (32)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS. A unique identifier associated with each itemization or transaction appearing in an FEC electronic file. A transaction ID is unique for a specific committee for a specific report.",
+            "example": "SB17.4326"
+            },
+            {
+            "columnName": "BACK_REF_TRAN_ID",
+            "fieldName": "Back reference transaction ID",
+            "position": "25",
+            "nullable": "Y",
+            "dataType": "VARCHAR2 (32)",
+            "description": "ONLY VALID FOR ELECTRONIC FILINGS. Used to associate one transaction with another transaction in the same report (using file number, transaction ID and back reference transaction ID).",
+            "example": "SB17.8690"
             }
         ]
     }

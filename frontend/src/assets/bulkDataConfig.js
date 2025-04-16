@@ -30,8 +30,8 @@ export const bulkDataSections = [
             { year: "1981–1982", url: "all-candidates/weball82.zip" },
             { year: "1979–1980", url: "all-candidates/weball80.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/all-candidates-file-description/"
-      },
+        dataDescriptionKey: "all_candidates",
+    },
     
       // 2. Candidate master
       {
@@ -87,7 +87,7 @@ export const bulkDataSections = [
             { year: "2001–2002", url: "cand-comm-link/ccl02.zip" },
             { year: "1999–2000", url: "cand-comm-link/ccl00.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/candidate-committee-linkage-file-description/",
+        dataDescriptionKey: "cand_comm_link",
         headerFile: "metadata/header-files/ccl_header_file.csv"
     },
 
@@ -113,7 +113,7 @@ export const bulkDataSections = [
             { year: "1997–1998", url: "congressional-campaigns/webl98.zip" },
             { year: "1995–1996", url: "congressional-campaigns/webl96.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/current-campaigns-house-and-senate-file-description/"
+        dataDescriptionKey: "congressional_campaigns",
     },
 
     // 5. Committee master
@@ -146,7 +146,7 @@ export const bulkDataSections = [
             { year: "1981–1982", url: "committee-master/cm82.zip" },
             { year: "1979–1980", url: "committee-master/cm80.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/committee-master-file-description/",
+        dataDescriptionKey: "committee_master",
         headerFile: "metadata/header-files/cm_header_file.csv"
     },
 
@@ -172,7 +172,7 @@ export const bulkDataSections = [
             { year: "1997–1998", url: "pac-summary/webk98.zip" },
             { year: "1995–1996", url: "pac-summary/webk96.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/pac-and-party-summary-file-description/"
+        dataDescriptionKey: "pac_summary",
     },
 
     // 7. Contributions by individuals
@@ -205,7 +205,7 @@ export const bulkDataSections = [
             { year: "1981–1982", url: "individual-contributions/indiv82.zip" },
             { year: "1979–1980", url: "individual-contributions/indiv80.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/contributions-individuals-file-description/",
+        dataDescriptionKey: "individual_contributions",
         headerFile: "metadata/header-files/indiv_header_file.csv"
     },
 
@@ -239,7 +239,7 @@ export const bulkDataSections = [
             { year: "1981–1982", url: "committee-contributions/pas282.zip" },
             { year: "1979–1980", url: "committee-contributions/pas280.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/contributions-committees-candidates-file-description/",
+        dataDescriptionKey: "committee_contributions",
         headerFile: "metadata/header-files/pas2_header_file.csv"
     },
 
@@ -273,7 +273,7 @@ export const bulkDataSections = [
             { year: "1981–1982", url: "committee-transactions/oth82.zip" },
             { year: "1979–1980", url: "committee-transactions/oth80.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/any-transaction-one-committee-another-file-description/",
+        dataDescriptionKey: "committee_transactions",
         headerFile: "metadata/header-files/oth_header_file.csv"
     },
 
@@ -295,7 +295,7 @@ export const bulkDataSections = [
             { year: "2005–2006", url: "operating-expenditures/oppexp06.zip" },
             { year: "2003–2004", url: "operating-expenditures/oppexp04.zip" }
         ],          
-        dataDescription: "/campaign-finance-data/operating-expenditures-file-description/",
+        dataDescriptionKey: "operating_expenditures",
         headerFile: "metadata/header-files/oppexp_header_file.csv"
     },
 

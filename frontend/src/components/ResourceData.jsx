@@ -1,7 +1,7 @@
 export const ResourceData = [
   {
     id: "form-download",
-    title: "Direct Downloads",
+    title: "Datasets",
     description: "Structured, normalized, analysis-ready bulk data files in a variety of formats are accessible via our download form.",
     link: "/form-download",
     color: "blue",
