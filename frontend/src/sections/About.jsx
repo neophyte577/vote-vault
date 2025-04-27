@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RevealOnScroll } from "../animations/RevealOnScroll";
 import { VoteVaultIcon } from "../components/VoteVaultIcon";
 import { HyperText } from "../animations/ScrambleText";
@@ -13,6 +13,23 @@ export const About = () => {
 
   const [revealWhyText, setRevealWhyText] = useState(false);
   const [revealWhyCard, setRevealWhyCard] = useState(false);
+
+  const [resourceLink, setResourceLink] = useState("#resources");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setResourceLink("#resources-mobile");
+      } else {
+        setResourceLink("#resources");
+      }
+    };
+
+    handleResize(); // Set on initial mount
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (    
     <section
@@ -71,7 +88,7 @@ export const About = () => {
               >
                 In a data ecosystem of overwhelming volume and underwhelming accessibility, VoteVault bridges the gap between raw election data and the people who need it. Whether you’re visualizing trends, tracking contributions, or analyzing election results{" "}
                 <a
-                  href="#resources"
+                  href={resourceLink}
                   className="text-paleHoney underline hover:text-butterCream transition-colors"
                 >
                   our tools

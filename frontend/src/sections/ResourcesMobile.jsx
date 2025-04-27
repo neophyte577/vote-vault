@@ -3,6 +3,7 @@ import { RevealOnScroll } from "../animations/RevealOnScroll";
 import { Particles } from "../animations/Particles";
 import { ResourceData } from "../components/ResourceData";
 import { ResourceCard } from "../components/ResourceCard";
+import { FlickeringDotPattern } from "../animations/FlickeringDotPattern";
 
 export const ResourcesMobile = () => {
   const [glowId, setGlowId] = useState(null);
@@ -13,7 +14,8 @@ export const ResourcesMobile = () => {
       id="resources-mobile"
       className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden"
     >
-      <Particles className="absolute inset-0 z-0" quantity={300} color="#FFE8A1" />
+      {/* <Particles className="absolute inset-0 z-0" quantity={300} color="#FFE8A1" /> */}
+      <FlickeringDotPattern className="z-0 fade-out-top-bottom" />
 
       <RevealOnScroll>
         <h2 className="text-[40px] font-orbitron text-6xl font-bold mt-5 mb-12 bg-gradient-to-r from-paleHoney to-butterCream bg-clip-text text-transparent text-center">

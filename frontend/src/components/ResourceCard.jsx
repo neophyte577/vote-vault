@@ -50,7 +50,7 @@ export const ResourceCard = ({
       return (
         <div
           ref={ref}
-          className={`glass p-6 px-4 rounded-xl border border-white/10 w-full transition-all duration-600 ease-in-out
+          className={`bg-mutedBlack p-6 px-4 rounded-xl border border-white/10 w-full transition-all duration-600 ease-in-out
             hover:-translate-y-1
             ${color === "blue" ? "hover:border-blue-500/30 hover:shadow-[0_0_10px_rgba(59,130,246,0.5)]" : ""}
             ${color === "red" ? "hover:border-red-500/30 hover:shadow-[0_0_10px_rgba(239,68,68,0.4)]" : ""}
