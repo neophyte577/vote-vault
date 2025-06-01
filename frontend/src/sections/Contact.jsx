@@ -34,11 +34,11 @@ export const Contact = () => {
     >
       <RevealOnScroll>
         <div className="w-full max-w-md px-6 sm:px-8">
-          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r text-paleHoney bg-clip-text text-center">
+          <h2 className="text-3xl font-extrabold mb-2 bg-gradient-to-r text-paleHoney bg-clip-text text-center">
             {" "}
             Questions? Concerns? Compliments?
           </h2>
-          <h3 className="text-2xl font-bold  bg-gradient-to-r text-paleHoney bg-clip-text text-center">
+          <h3 className="text-2xl font-bold bg-gradient-to-r text-paleHoney bg-clip-text text-center">
             We'd love to hear from you.
           </h3>
           <form onSubmit={handleSubmit}>

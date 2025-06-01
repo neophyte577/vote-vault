@@ -126,7 +126,7 @@ export const Home = () => {
 
               <HashLink
                 to="#contact"
-                className="border border-cream/50 text-paleHoney py-2 px-4 md:py-3 md:px-6 rounded transition-all duration-200 hover:-translate-y-0.5 hover:shadow-black hover:bg-cream/10"
+                className="bg-mutedBlack/65 border border-cream/50 text-paleHoney py-2 px-4 md:py-3 md:px-6 rounded transition-all duration-200 hover:-translate-y-0.5 hover:shadow-black hover:bg-cream/10"
               >
                 Get In Touch
               </HashLink>

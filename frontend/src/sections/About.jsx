@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import { RevealOnScroll } from "../animations/RevealOnScroll";
 import { VoteVaultIcon } from "../components/VoteVaultIcon";
 import { HyperText } from "../animations/ScrambleText";
@@ -25,7 +26,7 @@ export const About = () => {
       }
     };
 
-    handleResize(); // Set on initial mount
+    handleResize(); 
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -87,12 +88,12 @@ export const About = () => {
                 className="text-lg md:text-xl text-cream md:w-2/3 border-white/10 border rounded-xl p-6"
               >
                 In a data ecosystem of overwhelming volume and underwhelming accessibility, VoteVault bridges the gap between raw election data and the people who need it. Whether you’re visualizing trends, tracking contributions, or analyzing election results{" "}
-                <a
-                  href={resourceLink}
+                <NavLink
+                  to="#resources"
                   className="text-paleHoney underline hover:text-butterCream transition-colors"
                 >
                   our tools
-                </a>{" "}
+                </NavLink>{" "}
                 aim to make the process seamless and accessible.
               </FadeInCard>
             </div>
@@ -116,13 +117,13 @@ export const About = () => {
                 triggerOnce={revealWhyCard}
                 className="text-lg md:text-xl text-cream md:w-2/3 border-white/10 border rounded-xl p-6"
               >
-                Our mission is simple: empower transparency of our electoral system through data. We’re starting small and clean, but we’re building toward a one-stop shop for trustworthy, up-to-date political data. Want something added or improved?{" "}
-                <a
-                  href="#contact"
+                Our mission is simple: Empower transparency of our electoral system through data. We’re starting small and clean, but we’re building toward a one-stop shop for trustworthy, up-to-date political data. Want something added or improved?{" "}
+                <NavLink
+                  to="#contact"
                   className="text-paleHoney underline hover:text-butterCream transition-colors"
                 >
                   Let us know.
-                </a>
+                </NavLink>
               </FadeInCard>
             </div>
           </RevealOnScroll>
