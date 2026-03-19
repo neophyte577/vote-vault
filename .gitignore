@@ -5,3 +5,5 @@ commands.sh
 node_modules/
 .vscode/
 temp/
+metabase/
+*.zip

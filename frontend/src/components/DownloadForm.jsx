@@ -8,6 +8,7 @@ const DownloadForm = () => {
     const [cycles, setCycles] = useState([]);
     const [states, setStates] = useState([]);
     const [dataset, setDataset] = useState("candidate_summary");
+    const [filetype, setFiletype] = useState("csv");
     const [showMore, setShowMore] = useState(false);
 
     const datasetCycleMap = {
@@ -21,6 +22,12 @@ const DownloadForm = () => {
         committee_contributions: Array.from({ length: (2026 - 1980) / 2 + 1 }, (_, i) => 1980 + i * 2),
         committee_transactions: Array.from({ length: (2026 - 1980) / 2 + 1 }, (_, i) => 1980 + i * 2),
         operating_expenditures: Array.from({ length: (2026 - 2004) / 2 + 1 }, (_, i) => 2004 + i * 2)
+    };
+
+    const datasetFiletypeMap = {
+        individual_contributions: ["parquet"],
+        committee_transactions: ["parquet"],
+        operating_expenditures: ["csv", "parquet"]
     };
 
     useEffect(() => {
@@ -47,6 +54,17 @@ const DownloadForm = () => {
             setCycles(yearList);
         }
     }, [category, dataset]);
+
+    useEffect(() => {
+        const allowedFiletypes =
+            category === "finance"
+                ? (datasetFiletypeMap[dataset] || ["csv", "xlsx", "parquet"])
+                : ["csv", "xlsx", "parquet"];
+
+        if (!allowedFiletypes.includes(filetype)) {
+            setFiletype(allowedFiletypes[0]);
+        }
+    }, [category, dataset, filetype]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -168,7 +186,7 @@ const DownloadForm = () => {
 
                                         <div className="relative mt-3">
                                             <label htmlFor="filetype" className="block mb-2">Filetype:</label>
-                                            <select id="filetype" name="filetype" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
+                                            <select id="filetype" name="filetype" value={filetype} onChange={(e) => setFiletype(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
                                                 <option value="csv">CSV</option>
                                                 <option value="xlsx">Excel</option>
                                                 <option value="parquet">Parquet</option>
@@ -182,11 +200,22 @@ const DownloadForm = () => {
                         {category === "finance" && (
                             <div className="relative mt-3">
                                 <label htmlFor="filetype" className="block mb-2">Filetype:</label>
-                                <select id="filetype" name="filetype" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
-                                    <option value="csv">CSV</option>
-                                    <option value="xlsx">Excel</option>
-                                    <option value="parquet">Parquet</option>
+                                <select id="filetype" name="filetype" value={filetype} onChange={(e) => setFiletype(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
+                                    {(datasetFiletypeMap[dataset] || ["csv", "xlsx", "parquet"]).map((type) => (
+                                        <option key={type} value={type}>
+                                            {type === "csv" ? "CSV" : type === "xlsx" ? "Excel" : "Parquet"}
+                                        </option>
+                                    ))}
                                 </select>
+                                {dataset === "individual_contributions" || dataset === "committee_transactions" ? (
+                                    <p className="mt-2 text-sm text-paleHoney/80">
+                                        This dataset is currently available in Parquet only due to file size limitations.
+                                    </p>
+                                ) : dataset === "operating_expenditures" ? (
+                                    <p className="mt-2 text-sm text-paleHoney/80">
+                                        This dataset is currently available in CSV and Parquet only due to file size limitations.
+                                    </p>
+                                ) : null}
                             </div>
                         )}
 

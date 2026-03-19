@@ -14,7 +14,7 @@ export default function TableComponent({ data }) {
     useEffect(() => {
       const updateLength = () => {
         if (window.innerWidth < 640) {
-          setMaxLength(mobileMax); // Tailwind 'sm' breakpoint is 640px
+          setMaxLength(mobileMax); 
         } else {
           setMaxLength(defaultMax);
         }
