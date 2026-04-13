@@ -21,7 +21,8 @@ const DownloadForm = () => {
         individual_contributions: Array.from({ length: (2026 - 1980) / 2 + 1 }, (_, i) => 1980 + i * 2),
         committee_contributions: Array.from({ length: (2026 - 1980) / 2 + 1 }, (_, i) => 1980 + i * 2),
         committee_transactions: Array.from({ length: (2026 - 1980) / 2 + 1 }, (_, i) => 1980 + i * 2),
-        operating_expenditures: Array.from({ length: (2026 - 2004) / 2 + 1 }, (_, i) => 2004 + i * 2)
+        operating_expenditures: Array.from({ length: (2026 - 2004) / 2 + 1 }, (_, i) => 2004 + i * 2),
+        election_results: Array.from({ length: (2022 - 2002) / 2 + 1 }, (_, i) => 2002 + i * 2)
     };
 
     const datasetFiletypeMap = {
@@ -83,6 +84,10 @@ const DownloadForm = () => {
 
         if (category === "finance") {
             params.append("dataset", formData.get("dataset"));
+
+            if (formData.get("dataset") === "election_results") {
+                params.append("contest", formData.get("contest"));
+            }
         } else if (category === "election") {
             params.append("race", formData.get("race"));
             params.append("state", formData.get("state"));
@@ -112,17 +117,8 @@ const DownloadForm = () => {
                         <div className="relative mt-3">
                             <label htmlFor="category" className="block mb-2">Category:</label>
                             <select id="category" name="category" value={category} onChange={(e) => setCategory(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
-                                <option value="finance">FEC Campaign Finance Data</option>
+                                <option value="finance">FEC Data</option>
                                 <option value="election">Federal Election Results</option>
-                            </select>
-                        </div>
-
-                        <div className="relative mt-3">
-                            <label htmlFor="cycle" className="block mb-2">Cycle:</label>
-                            <select id="cycle" name="cycle" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
-                                {cycles.map((year) => (
-                                    <option key={year} value={year}>{`${year - 1}-${year}`}</option>
-                                ))}
                             </select>
                         </div>
 
@@ -146,9 +142,28 @@ const DownloadForm = () => {
                                     <option value="committee_contributions">Committee Contributions</option>
                                     <option value="committee_transactions">Committee Transactions</option>
                                     <option value="operating_expenditures">Operating Expenditures</option>
+                                    <option value="election_results">FEC Election Results</option>
                                 </select>
                             </div>
                         )}
+
+                        {category === "finance" && dataset === "election_results" && (
+                            <div className="relative mt-3">
+                                <label htmlFor="contest" className="block mb-2">Contest:</label>
+                                <select id="contest" name="contest" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
+                                    <option value="house">House</option>
+                                </select>
+                            </div>
+                        )}
+
+                        <div className="relative mt-3">
+                            <label htmlFor="cycle" className="block mb-2">Cycle:</label>
+                            <select id="cycle" name="cycle" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
+                                {cycles.map((year) => (
+                                    <option key={year} value={year}>{`${year - 1}-${year}`}</option>
+                                ))}
+                            </select>
+                        </div>
 
                         {category === "election" && (
                             <div className="relative mt-3">
@@ -161,7 +176,7 @@ const DownloadForm = () => {
                                 <select id="state" name="state" className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 focus:outline-none focus:border-paleHoney focus:bg-blue-500/5">
                                     <option value="nationwide">Nationwide</option>
                                     {states.map((state) => (
-                                        <option key={state} value={state.toLowerCase().replace(/\s+/g, '_')}>{state}</option>
+                                        <option key={state} value={state.toLowerCase().replace(/\s+/g, "_")}>{state}</option>
                                     ))}
                                 </select>
 

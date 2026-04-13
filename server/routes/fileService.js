@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { S3Client, HeadObjectCommand } from "@aws-sdk/client-s3";
 
-dotenv.config(); 
+dotenv.config();
 
 const router = express.Router();
 
@@ -16,39 +16,57 @@ const s3 = new S3Client({
 
 const BUCKET_NAME = process.env.S3_BUCKET;
 const FASTAPI_URL = process.env.FASTAPI_URL || "http://localhost:1337";
-const CLOUDFRONT_DOMAIN = process.env.CLOUDFRONT_DOMAIN; 
+const CLOUDFRONT_DOMAIN = process.env.CLOUDFRONT_DOMAIN;
 
 router.get("/", async (req, res) => {
-  const { category, cycle, dataset, filetype } = req.query;
+  const { category, cycle, dataset, contest, filetype } = req.query;
 
   if (!category || !cycle || !dataset || !filetype) {
     return res.status(400).json({ error: "Missing required parameters." });
   }
 
-  const sourceFilename = `campaign-finance/${cycle}/${dataset}_${cycle}.parquet`;
+  const sourceFilename =
+    dataset === "election_results"
+      ? `electoral/${contest}/fec_${contest}_results_${cycle}.parquet`
+      : `campaign-finance/${cycle}/${dataset}_${cycle}.parquet`;
+
   console.log(`Checking file in S3: ${sourceFilename}`);
 
   try {
-    await s3.send(new HeadObjectCommand({ Bucket: BUCKET_NAME, Key: sourceFilename }));
+    await s3.send(
+      new HeadObjectCommand({
+        Bucket: BUCKET_NAME,
+        Key: sourceFilename,
+      })
+    );
     console.log(`✓ Source file found in S3: ${sourceFilename}`);
   } catch (error) {
     console.error(`✗ Source file missing in S3: ${sourceFilename}`, error);
-    return res.status(404).json({ error: `Source file '${sourceFilename}' not found in S3.` });
+    return res
+      .status(404)
+      .json({ error: `Source file '${sourceFilename}' not found in S3.` });
   }
 
   if (filetype === "parquet") {
-    const cloudfrontUrl = `https://${CLOUDFRONT_DOMAIN}/${sourceFilename}?nocache=${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const cloudfrontUrl = `https://${CLOUDFRONT_DOMAIN}/${sourceFilename}?nocache=${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2)}`;
 
     console.log("Returning CloudFront URL:", cloudfrontUrl);
     res.json({ download_url: cloudfrontUrl });
-
   } else if (filetype === "csv" || filetype === "xlsx") {
-    const fastapiUrl = `${FASTAPI_URL}/convert?dataset_name=${dataset}&cycle=${cycle}&filetype=${filetype}`;
+    const fastapiUrl =
+      dataset === "election_results"
+        ? `${FASTAPI_URL}/convert?dataset_name=${dataset}&contest=${contest}&cycle=${cycle}&filetype=${filetype}`
+        : `${FASTAPI_URL}/convert?dataset_name=${dataset}&cycle=${cycle}&filetype=${filetype}`;
+
     console.log(`Redirecting user to FastAPI: ${fastapiUrl}`);
     res.json({ redirect_url: fastapiUrl });
-
   } else {
-    res.status(400).json({ error: "Invalid filetype. Only 'parquet', 'csv', or 'xlsx' are allowed." });
+    res.status(400).json({
+      error:
+        "Invalid filetype. Only 'parquet', 'csv', or 'xlsx' are allowed.",
+    });
   }
 });
 
